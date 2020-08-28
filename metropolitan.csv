@@ -1,0 +1,239 @@
+Name,Code,State Code,State,Primary Language
+Birmingham,US-BI-630,AL,Alabama,en
+Columbus,US-CO-522,AL,Alabama,en
+Dothan,US-DO-606,AL,Alabama,en
+Huntsville,US-HU-691,AL,Alabama,en
+Mobile,US-MO-686,AL,Alabama,en
+Montgomery-Selma,US-MS-698,AL,Alabama,en
+Anchorage,US-AN-743,AK,Alaska,en
+Fairbanks,US-FA-745,AK,Alaska,en
+Juneau,US-JU-747,AK,Alaska,en
+Phoenix,US-PH-753,AZ,Arizona,en
+Tucson (Sierra Vista),US-TU-789,AZ,Arizona,en
+Yuma-El Centro,US-YU-771,AZ,Arizona,en
+Ft. Smith,US-FS-670,AR,Arkansas,en
+Jonesboro,US-JO-734,AR,Arkansas,en
+Little Rock,US-LR-693,AR,Arkansas,en
+Monroe-El Dorado,US-MO-628,AR,Arkansas,en
+Bakersfield,US-BA-800,CA,California,en
+Chico-Redding,US-CH-868,CA,California,en
+Eureka,US-EU-802,CA,California,en
+Fresno-Visalia,US-FV-866,CA,California,en
+Los Angeles,US-LA-803,CA,California,en
+Monterey-Salinas,US-MS-828,CA,California,en
+Palm Springs,US-PS-804,CA,California,en
+Sacramento,US-SC-862,CA,California,en
+San Diego,US-SD-825,CA,California,en
+San Francisco,US-SF-807,CA,California,en
+Santa Barbara,US-SB-855,CA,California,en
+Yuma-El Centro,US-YC-771,CA,California,en
+Colorado Sprgs,US-CS-752,CO,Colorado,en
+Denver,US-DE-751,CO,Colorado,en
+Grand Junction,US-GJ-773,CO,Colorado,en
+Hartford & New Haven,US-HH-533,CT,Connecticut,en
+Washington,US-WA-511,DC,District of Columbia,en
+Ft. Myers-Naples,US-FM-571,FL,Florida,en
+Gainesville,US-GA-592,FL,Florida,en
+Jacksonville,US-JA-561,FL,Florida,en
+Miami-Ft. Lauderdale,US-MI-528,FL,Florida,en
+Mobile,US-MO-686,FL,Florida,en
+Orlando,US-OR-534,FL,Florida,en
+Panama City,US-PC-656,FL,Florida,en
+Tallahassee,US-TL-530,FL,Florida,en
+Tampa,US-TM-539,FL,Florida,en
+W. Palm Beach,US-PB-548,FL,Florida,en
+Albany,US-AL-525,GA,Georgia,en
+Atlanta,US-AT-524,GA,Georgia,en
+Augusta-Aiken,US-AU-520,GA,Georgia,en
+Columbus,US-CO-522,GA,Georgia,en
+Macon,US-MA-503,GA,Georgia,en
+Savannah,US-SA-507,GA,Georgia,en
+Tallahassee,US-TA-530,GA,Georgia,en
+Honolulu,US-HO-744,HI,Hawaii,en
+Boise,US-BO-757,ID,Idaho,en
+Idaho Falls,US-ID-758,ID,Idaho,en
+Twin Falls,US-TW-760,ID,Idaho,en
+Champaign,US-CA-648,IL,Illinois,en
+Chicago,US-CH-602,IL,Illinois,en
+Davenport,US-DA-682,IL,Illinois,en
+Paducah,US-PA-632,IL,Illinois,en
+Peoria-Bloomington,US-PB-675,IL,Illinois,en
+Quincy,US-QU-717,IL,Illinois,en
+Rockford,US-RO-610,IL,Illinois,en
+Evansville,US-EV-649,IN,Indiana,en
+Ft. Wayne,US-FW-509,IN,Indiana,en
+Indianapolis,US-IN-527,IN,Indiana,en
+Lafayette,US-LA-582,IN,Indiana,en
+South Bend-Elkhart,US-SB-588,IN,Indiana,en
+Terre Haute,US-TH-581,IN,Indiana,en
+Cedar Rapids,US-CR-637,IA,Iowa,en
+Davenport,US-DA-682,IA,Iowa,en
+Des Moines-Ames,US-MA-679,IA,Iowa,en
+Ottumwa,US-OT-631,IA,Iowa,en
+Quincy,US-QU-717,IA,Iowa,en
+Rochester,US-RO-611,IA,Iowa,en
+Sioux City,US-SC-624,IA,Iowa,en
+Joplin-Pittsburg,US-JP-603,KS,Kansas,en
+Kansas City,US-KC-616,KS,Kansas,en
+Topeka,US-PO-605,KS,Kansas,en
+Wichita,US-WI-678,KS,Kansas,en
+Bowling Green,US-BG-736,KY,Kentucky,en
+Lexington,US-LX-541,KY,Kentucky,en
+Louisville,US-LO-529,KY,Kentucky,en
+Paducah,US-PA-632,KY,Kentucky,en
+Alexandria,US-AL-644,LA,Louisiana,en
+Baton Rouge,US-BR-716,LA,Louisiana,en
+Lafayette,US-LA-642,LA,Louisiana,en
+Lake Charles,US-LC-643,LA,Louisiana,en
+Monroe-El Dorado,US-MD-628,LA,Louisiana,en
+New Orleans,US-NO-622,LA,Louisiana,en
+Shreveport,US-SH-612,LA,Louisiana,en
+Bangor,US-BA-537,ME,Maine,en
+Portland-Auburn,US-PA-500,ME,Maine,en
+Presque Isle,US-PI-552,ME,Maine,en
+Baltimore,US-BA-512,MD,Maryland,en
+Salisbury,US-SA-576,MD,Maryland,en
+Washington,US-WA-511,MD,Maryland,en
+Boston,US-BO-506,MA,Massachusetts,en
+Providence,US-PR-521,MA,Massachusetts,en
+Springfield-Holyoke,US-SH-543,MA,Massachusetts,en
+Alpena,US-AL-583,MI,Michigan,en
+Detroit,US-DE-505,MI,Michigan,en
+Flint-Saginaw,US-FS-513,MI,Michigan,en
+Grand Rapids,US-GR-563,MI,Michigan,en
+Lansing,US-LA-551,MI,Michigan,en
+Marquette,US-MA-553,MI,Michigan,en
+Traverse City,US-TC-540,MI,Michigan,en
+Duluth-Superior,US-DS-676,MN,Minnesota,en
+Mankato,US-MA-737,MN,Minnesota,en
+Minneapolis-St. Paul,US-MS-613,MN,Minnesota,en
+Rochester,US-RO-611,MN,Minnesota,en
+Biloxi-Gulfport,US-BG-746,MS,Mississippi,en
+Columbus,US-CO-673,MS,Mississippi,en
+Greenwood-Greenville,US-GG-647,MS,Mississippi,en
+Hattiesburg-Laurel,US-HL-710,MS,Mississippi,en
+Jackson,US-JA-718,MS,Mississippi,en
+Meridian,US-ME-711,MS,Mississippi,en
+Columbia,US-CO-604,MO,Missouri,en
+Joplin-Pittsburg,US-JP-603,MO,Missouri,en
+Kansas City,US-KC-616,MO,Missouri,en
+Ottumwa,US-OT-631,MO,Missouri,en
+Paducah,US-PA-632,MO,Missouri,en
+Quincy,US-QU-717,MO,Missouri,en
+Springfield,US-SP-619,MO,Missouri,en
+St. Joseph,US-SJ-638,MO,Missouri,en
+St. Louis,US-SL-609,MO,Missouri,en
+Billings,US-BI-756,MT,Montana,en
+Butte-Bozeman,US-BB-754,MT,Montana,en
+Glendive,US-GL-798,MT,Montana,en
+Great Falls,US-GF-755,MT,Montana,en
+Helena,US-HE-766,MT,Montana,en
+Missoula,US-MI-762,MT,Montana,en
+Cheyenne,US-CH-759,NE,Nebraska,en
+Lincoln,US-LI-722,NE,Nebraska,en
+North Platte,US-NP-740,NE,Nebraska,en
+Omaha,US-OM-652,NE,Nebraska,en
+Las Vegas,US-LV-839,NV,Nevada,en
+Reno,US-RE-811,NV,Nevada,en
+Boston,US-BO-506,NH,New Hampshire,en
+Albuquerque-Santa Fe,US-AS-790,NM,New Mexico,en
+El Paso,US-EP-765,NM,New Mexico,en
+Albany,US-AL-532,NY,New York,en
+Binghamton,US-BI-502,NY,New York,en
+Buffalo,US-BF-514,NY,New York,en
+Burlington,US-BL-523,NY,New York,en
+Elmira,US-EL-565,NY,New York,en
+New York,US-NY-501,NY,New York,en
+Rochester,US-RO-538,NY,New York,en
+Syracuse,US-SY-555,NY,New York,en
+Utica,US-UT-526,NY,New York,en
+Watertown,US-WA-549,NY,New York,en
+Charlotte,US-CH-517,NC,North Carolina,en
+Greensboro,US-GB-518,NC,North Carolina,en
+Greenville,US-GV-545,NC,North Carolina,en
+Greenville,US-GL-567,NC,North Carolina,en
+Raleigh,US-RA-560,NC,North Carolina,en
+Wilmington,US-WI-550,NC,North Carolina,en
+Fargo-Valley City,US-FV-724,ND,North Dakota,en
+Minot,US-MI-687,ND,North Dakota,en
+Cincinnati,US-CI-515,OH,Ohio,en
+Cleveland,US-CL-510,OH,Ohio,en
+Columbus,US-CO-535,OH,Ohio,en
+Dayton,US-DA-542,OH,Ohio,en
+Lima,US-LI-558,OH,Ohio,en
+Toledo,US-TO-547,OH,Ohio,en
+Wheeling,US-WH-554,OH,Ohio,en
+Youngstown,US-YO-536,OH,Ohio,en
+Zanesville,US-ZA-596,OH,Ohio,en
+Oklahoma City,US-OC-650,OK,Oklahoma,en
+Sherman-Ada,US-SA-657,OK,Oklahoma,en
+Tulsa,US-TU-671,OK,Oklahoma,en
+Wichita Fls,US-WF-627,OK,Oklahoma,en
+Bend,US-BE-821,OR,Oregon,en
+Eugene,US-EU-801,OR,Oregon,en
+Medford,US-ME-813,OR,Oregon,en
+Portland,US-PO-820,OR,Oregon,en
+Erie,US-ER-516,PA,Pennsylvania,en
+Harrisburg,US-HA-566,PA,Pennsylvania,en
+Johnstown,US-JO-574,PA,Pennsylvania,en
+Philadelphia,US-PH-504,PA,Pennsylvania,en
+Pittsburgh,US-PI-508,PA,Pennsylvania,en
+Wilkes Barre,US-WB-577,PA,Pennsylvania,en
+Providence,US-PR-521,RI,Rhode Island,en
+Augusta-Aiken,US-AA-520,SC,South Carolina,en
+Charleston,US-CH-519,SC,South Carolina,en
+Columbia,US-CO-546,SC,South Carolina,en
+Greenville,US-GR-567,SC,South Carolina,en
+Myrtle Beach,US-MB-570,SC,South Carolina,en
+Rapid City,US-RC-764,SD,South Dakota,en
+Sioux Falls,US-SF-725,SD,South Dakota,en
+Chattanooga,US-CH-575,TN,Tennessee,en
+Jackson,US-JA-639,TN,Tennessee,en
+Knoxville,US-KN-557,TN,Tennessee,en
+Memphis,US-ME-640,TN,Tennessee,en
+Nashville,US-NA-659,TN,Tennessee,en
+Tri-Cities,US-TC-531,TN,Tennessee,en
+Abilene-Sweetwater,US-AS-662,TX,Texas,en
+Amarillo,US-AM-634,TX,Texas,en
+Austin,US-AU-635,TX,Texas,en
+Beaumont-Port Arthur,US-BA-692,TX,Texas,en
+Corpus Christi,US-CC-600,TX,Texas,en
+Dallas-Ft. Worth,US-DW-623,TX,Texas,en
+El Paso,US-EP-765,TX,Texas,en
+Harlingen,US-HA-636,TX,Texas,en
+Houston,US-HO-618,TX,Texas,en
+Laredo,US-LA-749,TX,Texas,en
+Lubbock,US-LU-651,TX,Texas,en
+Odessa-Midland,US-OM-633,TX,Texas,en
+San Angelo,US-SG-661,TX,Texas,en
+San Antonio,US-SA-641,TX,Texas,en
+Sherman-Ada,US-SH-657,TX,Texas,en
+Tyler-Longview,US-TL-709,TX,Texas,en
+Victoria,US-VI-626,TX,Texas,en
+Waco-Temple-Bryan,US-WT-625,TX,Texas,en
+Wichita Fls,US-WF-627,TX,Texas,en
+Salt Lake City,US-SL-770,UT,Utah,en
+Burlington,US-BU-523,VT,Vermont,en
+Charlottesville,US-CH-584,VA,Virginia,en
+Harrisonburg,US-HA-569,VA,Virginia,en
+Norfolk,US-NO-544,VA,Virginia,en
+Richmond-Petersburg,US-RP-556,VA,Virginia,en
+Roanoke-Lynchburg,US-RL-573,VA,Virginia,en
+Tri-Cities,US-TC-531,VA,Virginia,en
+Seattle-Tacoma,US-ST-819,WA,Washington,en
+Spokane,US-SP-881,WA,Washington,en
+Yakima,US-YA-810,WA,Washington,en
+Bluefield,US-BL-559,WV,West Virginia,en
+Charleston,US-CH-564,WV,West Virginia,en
+Clarksburg-Weston,US-CL-598,WV,West Virginia,en
+Parkersburg,US-PA-597,WV,West Virginia,en
+Wheeling,US-WH-554,WV,West Virginia,en
+Duluth-Superior,US-DS-676,WI,Wisconsin,en
+Green Bay-Appleton,US-GB-658,WI,Wisconsin,en
+La Crosse-Eau Claire,US-LC-702,WI,Wisconsin,en
+Madison,US-MA-669,WI,Wisconsin,en
+Milwaukee,US-MI-617,WI,Wisconsin,en
+Wausau-Rhinelander,US-WR-705,WI,Wisconsin,en
+Casper-Riverton,US-CR-767,WY,Wyoming,en
+Cheyenne,US-CH-759,WY,Wyoming,en
+Idaho Falls,US-IF-758,WY,Wyoming,en
