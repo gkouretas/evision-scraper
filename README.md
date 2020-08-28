@@ -35,4 +35,4 @@ If you do not have these packages currently installed, they can easily be instal
 Notes
 -----
 
-If using WindowsOS, you will need to change "/" characters to "\" characters to account for the difference in paths with Windows and Mac.  Also, as mentioned earlier, download a new version of chromedriver if using Windows or Linux.  Then, simply repalce it with the chromedriver that exists in the "evision_scraper" folder.
+If using WindowsOS, you will need to change "/" characters to ""\"" characters to account for the difference in paths with Windows and Mac.  Also, as mentioned earlier, download a new version of chromedriver if using Windows or Linux.  Then, simply repalce it with the chromedriver that exists in the "evision_scraper" folder.
