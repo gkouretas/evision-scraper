@@ -126,7 +126,7 @@ def whoflunet(dir):
     # try:
     #     driver = webdriver.Chrome(PATH, options=chromeOptions)
     # except Exception:
-    driver = webdriver.Chrome("CHROMEDRIVER_PATH", options=chromeOptions)
+    driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     count = 0
