@@ -121,12 +121,12 @@ def whoflunet(dir):
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
     # get path to location of chrome driver (needed for selenium)
-    PATH = os.getcwdb().decode() + '/chromedriver'
+    # PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
-    try:
-        driver = webdriver.Chrome(PATH, options=chromeOptions)
-    except Exception:
-        driver = webdriver.Chrome("CHROMEDRIVER_PATH", options=chromeOptions)
+    # try:
+    #     driver = webdriver.Chrome(PATH, options=chromeOptions)
+    # except Exception:
+    driver = webdriver.Chrome("CHROMEDRIVER_PATH", options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     count = 0
