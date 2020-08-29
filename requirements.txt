@@ -1,5 +1,4 @@
 googletrans==3.0.0
-pytrends==4.7.2
 pandas==1.0.1
-rpy2==3.3.5
 selenium==3.141.0
+pytrends==4.7.2
