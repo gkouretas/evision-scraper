@@ -111,16 +111,22 @@ def cdcwho(dir):
 
 def whoflunet(dir):
     # reads list of countries that who flnet data exists for
-    country_list = pd.read_csv('flunetcountrylist.csv')['Countries'].tolist()
+    country_list = pd.read_csv('data/flunetcountrylist.csv')['Countries'].tolist()
 
     dir = create_dir(dir + '/cdc_who_data' + '/International')
     # turn on option of headless chrome (meaning browser will not open)
     chromeOptions = Options()
+    chromeOptions.binary_location = os.environ.get("/app/.apt/usr/bin/google-chrome")
     chromeOptions.headless = True
+    chromeOptions.add_argument("--disable-dev-shm-usage")
+    chromeOptions.add_argument("--no-sandbox")
     # get path to location of chrome driver (needed for selenium)
     PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
-    driver = webdriver.Chrome(PATH, options=chromeOptions)
+    try:
+        driver = webdriver.Chrome(PATH, options=chromeOptions)
+    except Exception:
+        driver = webdriver.Chrome("/app/.apt/usr/bin/google-chrome", options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     count = 0
@@ -159,12 +165,12 @@ def whoflunet(dir):
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
         count += 1
-        if count == 5:
+        if count == 1:
             print('bye')
             break
 
 dir = directory() # creates base directory
-cdcwho(dir) # scrapes cdc/who data
+# cdcwho(dir) # scrapes cdc/who data
 whoflunet(dir) # scrapes flunet data
 # pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 # trends_data(dir) # scrapes google trends data
