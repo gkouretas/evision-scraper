@@ -5,6 +5,8 @@ This project allows for the scraping of all necessary eVision datasets.  These i
 
 This was developed using Python 3.7.x on MacOS, so no guarantees that it works on anything more outdated.
 
+This branch is a repository for Heroku servers, whereas the master branch is a repository for anyone to run on their desktop.
+
 Requirements
 ------------
 
