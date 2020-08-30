@@ -32,7 +32,8 @@ def trends_data(dir):
 def trends_scrape(area, dir, names, codes, language):
     time = 'today 5-y' # time period which google trends wants to extract data
     create_dir(dir) # adds directory for corresponding level
-    for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
+    for area_count in range(0, 25): # limited range for testing
+    # for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
         terms = ['flu', 'cough', 'fever', 'tamiflu'] # terms that will be used for scraping
         terms.sort() # sorts terms in alphabetical order (not necessary)
         en_terms = terms # save array of english
@@ -116,17 +117,13 @@ def whoflunet(dir):
     dir = create_dir(dir + '/cdc_who_data' + '/International')
     # turn on option of headless chrome (meaning browser will not open)
     chromeOptions = Options()
-    chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chromeOptions.headless = True
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
     # get path to location of chrome driver (needed for selenium)
     PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
-    try:
-        driver = webdriver.Chrome(PATH, options=chromeOptions)
-    except Exception:
-        driver = webdriver.Chrome("CHROMEDRIVER_PATH", options=chromeOptions)
+    driver = webdriver.Chrome(PATH, options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     count = 0
@@ -148,7 +145,7 @@ def whoflunet(dir):
         week_to.select_by_visible_text("53") # selects end week (doing 53 will give you most recent year)
         display_report = driver.find_element_by_name("ctl_ViewReport") # finds html element for button that loads spreadsheet
         display_report.click() # click button
-        print("Downloaded data from " + name)
+        print("Downloading data from " + name)
         while(True):
             try: # continually attempts while loading; will execute when spreadsheet gets loaded. time varies depending on how much data you're attempting to extract
                 find_download = driver.find_element_by_id("ctl_ReportViewer_ctl05_ctl04_ctl00_ButtonLink") # finds dropdown element that allows for desired download format
@@ -165,12 +162,12 @@ def whoflunet(dir):
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
         count += 1
-        if count == 1:
+        if count == 5: # limited range for testing
             print('bye')
             break
 
 dir = directory() # creates base directory
-# cdcwho(dir) # scrapes cdc/who data
+cdcwho(dir) # scrapes cdc/who data
 whoflunet(dir) # scrapes flunet data
-# pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
-# trends_data(dir) # scrapes google trends data
+pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
+trends_data(dir) # scrapes google trends data
