@@ -174,6 +174,6 @@ dir = directory() # creates base directory
 # cdcwho(dir) # scrapes cdc/who data
 # while(True):
 #     if datetime.now().strftime("%H:%M:%S") == '00:00:00' # will run program at midnight every day
-        whoflunet(dir) # scrapes flunet data
-        pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
-        trends_data(dir) # scrapes google trends data
+whoflunet(dir) # scrapes flunet data
+pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
+trends_data(dir) # scrapes google trends data
