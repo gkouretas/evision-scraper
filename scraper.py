@@ -32,8 +32,8 @@ def trends_data(dir):
 def trends_scrape(area, dir, names, codes, language):
     time = 'today 5-y' # time period which google trends wants to extract data
     create_dir(dir) # adds directory for corresponding level
-    for area_count in range(0, 5): # for testing
-    # for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
+    # for area_count in range(0, 5): # for testing
+    for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
         terms = ['flu', 'cough', 'fever', 'tamiflu'] # terms that will be used for scraping
         terms.sort() # sorts terms in alphabetical order (not necessary)
         en_terms = terms # save array of english
@@ -130,7 +130,7 @@ def whoflunet(dir):
     driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
-    count = 0
+    # count = 0
     prev_name = ''
     for name in country_list: # loops through list of countries
         DOWNLOAD_PATH = create_dir(dir + '/' + name) # adds a directory for given country
@@ -165,10 +165,10 @@ def whoflunet(dir):
                 break
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
-        count += 1
-        if count == 5:
-            print('bye')
-            break
+        # count += 1
+        # if count == 5:
+        #     print('bye')
+        #     break
 
 dir = directory() # creates base directory
 # cdcwho(dir) # scrapes cdc/who data
