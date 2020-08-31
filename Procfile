@@ -1,1 +1,1 @@
-web: python scraper.py $PORT
+worker: python scraper.py
