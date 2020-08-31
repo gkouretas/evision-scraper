@@ -19,6 +19,14 @@ def directory(): # creates necessary directory for
     dir = create_dir(dir_loc + '/' + dir_name) # sends name to create_dir() to create main directory that will store everything
     return dir
 
+def chromeSetUp():
+    chromeOptions = Options()
+    chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chromeOptions.headless = True
+    chromeOptions.add_argument("--disable-dev-shm-usage")
+    chromeOptions.add_argument("--no-sandbox")
+    return chromeOptions
+
 def create_dir(dir):
     if not os.path.exists(dir): # checks to ensure no duplicate directories exist (shouldn't ever happen)
         os.makedirs(dir) # creates directory
@@ -29,6 +37,7 @@ def trends_data(dir):
     level = ['national', 'state', 'metropolitan']
     for area in level:
         trends_scrape(area, dir + '/' + area, pd.read_csv('data/{}.csv'.format(area))['Name'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Code'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Primary Language'].tolist())
+
 def trends_scrape(area, dir, names, codes, language):
     time = 'today 5-y' # time period which google trends wants to extract data
     create_dir(dir) # adds directory for corresponding level
@@ -119,11 +128,14 @@ def whoflunet(dir):
 
     dir = create_dir(dir + '/cdc_who_data' + '/International')
     # turn on option of headless chrome (meaning browser will not open)
-    chromeOptions = Options()
-    chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    chromeOptions.headless = True
-    chromeOptions.add_argument("--disable-dev-shm-usage")
-    chromeOptions.add_argument("--no-sandbox")
+
+    chromeOptions = chromeSetUp()
+
+    # chromeOptions = Options()
+    # chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    # chromeOptions.headless = True
+    # chromeOptions.add_argument("--disable-dev-shm-usage")
+    # chromeOptions.add_argument("--no-sandbox")
     # get path to location of chrome driver (needed for selenium)
     # PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
