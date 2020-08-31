@@ -8,10 +8,10 @@ from googletrans import Translator
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
-# import rpy2.robjects as robjects
-# import rpy2.robjects.packages as rpackages
-# from rpy2.robjects.packages import importr
-# from rpy2.robjects.vectors import StrVector
+import rpy2.robjects as robjects
+import rpy2.robjects.packages as rpackages
+from rpy2.robjects.packages import importr
+from rpy2.robjects.vectors import StrVector
 
 def directory(): # creates necessary directory for
     dir_loc = os.getcwdb().decode() # gets current directory
@@ -72,43 +72,43 @@ def fix_terms(lang, terms):
         count += 1
     return terms # returns translated terms
 
-# def cdcwho(dir):
-#     base = rpackages.importr('base')  # setting up r environment and installing necessary packages
-#     utils = rpackages.importr('utils')
-#     utils.chooseCRANmirror(ind = 1)
-#     packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
-#     names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
-#     if len(names) > 0:
-#         utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
-#     dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-#     robjects.r('''
-#     cdc_scrape <- function(dir) {
-#         library(cdcfluview)
-#         library(hrbrthemes)
-#         library(tidyverse)
-#
-#         #Get National ILI CSV and latest WHO CSV
-#         national_ili <- ilinet("national")
-#         national_who <- who_nrevss("national", years = 2018)
-#         dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
-#         write.csv(national_ili, file = dir1, na = "")
-#         dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
-#         write.csv(national_who, file = dir2, na = "")
-#
-#         #Get State ILI CSV and latest WHO CSV
-#         state_ili <- ilinet("state")
-#         dir3 = paste(dir, "/ILIData_States.csv", sep = "")
-#         write.csv(state_ili, file = dir3, na = "")
-#         state_who <- who_nrevss("state", years = 2018)
-#         dir4 = paste(dir, "/WHOData_States.csv", sep = "")
-#         write.csv(state_who, file = dir4, na = "") }
-#         ''')
-#
-#         # r function that scrapes cdc data
-#         # creates function called "cdc_scrape" that takes in needed directory
-#
-#     cdc_scrape = robjects.r['cdc_scrape'] # stores r function
-#     cdc_scrape(dir) # calls r function, passing directory to place data
+def cdcwho(dir):
+    base = rpackages.importr('base')  # setting up r environment and installing necessary packages
+    utils = rpackages.importr('utils')
+    utils.chooseCRANmirror(ind = 1)
+    packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
+    names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
+    if len(names) > 0:
+        utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
+    dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
+    robjects.r('''
+    cdc_scrape <- function(dir) {
+        library(cdcfluview)
+        library(hrbrthemes)
+        library(tidyverse)
+
+        #Get National ILI CSV and latest WHO CSV
+        national_ili <- ilinet("national")
+        national_who <- who_nrevss("national", years = 2018)
+        dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
+        write.csv(national_ili, file = dir1, na = "")
+        dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
+        write.csv(national_who, file = dir2, na = "")
+
+        #Get State ILI CSV and latest WHO CSV
+        state_ili <- ilinet("state")
+        dir3 = paste(dir, "/ILIData_States.csv", sep = "")
+        write.csv(state_ili, file = dir3, na = "")
+        state_who <- who_nrevss("state", years = 2018)
+        dir4 = paste(dir, "/WHOData_States.csv", sep = "")
+        write.csv(state_who, file = dir4, na = "") }
+        ''')
+
+        # r function that scrapes cdc data
+        # creates function called "cdc_scrape" that takes in needed directory
+
+    cdc_scrape = robjects.r['cdc_scrape'] # stores r function
+    cdc_scrape(dir) # calls r function, passing directory to place data
 
 def whoflunet(dir):
     # reads list of countries that who flnet data exists for
