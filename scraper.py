@@ -176,10 +176,10 @@ def whoflunet(dir):
                 break
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
-        count += 1
-        if count == 5:
-            print('bye')
-            break
+        # count += 1
+        # if count == 5:
+        #     print('bye')
+        #     break
 
 dir = directory() # creates base directory
 # cdcwho(dir) # scrapes cdc/who data
