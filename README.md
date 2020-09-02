@@ -27,7 +27,7 @@ If you have version < 85.x of Google Chrome, or are not on MacOS, you can downlo
 Installation
 ------------
 
-If you do not have these packages currently installed, they can easily be installed using the pip install -r requirements.txt command on your console.
+If you do not have these packages currently installed, they can easily be installed using the pip install -r requirements2.txt command on your console.
 
 Notes
 -----
