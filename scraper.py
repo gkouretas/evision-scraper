@@ -17,7 +17,7 @@ def directory(): # creates necessary directory for
 
 def chromeSetUp():
     chromeOptions = Options()
-    if os.environ.get("GOOGLE_CHROME_BIN") != None: chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    if bool(os.environ.get("GOOGLE_CHROME_BIN")): chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chromeOptions.headless = True
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
@@ -185,7 +185,6 @@ dir = directory() # creates base directory
 # cdcwho(dir) # scrapes cdc/who data
 # while(True):
 #     if datetime.now().strftime("%H:%M:%S") == '00:00:00' # will run program at midnight every day
->>>>>>> server
 whoflunet(dir) # scrapes flunet data
 pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 trends_data(dir) # scrapes google trends data
