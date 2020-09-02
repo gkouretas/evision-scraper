@@ -88,78 +88,78 @@ def fix_terms(lang, terms):
 
 
 def cdcwho(dir):
-    # try:
-    #     import rpy2.robjects as robjects
-    #     import rpy2.robjects.packages as rpackages
-    #     from rpy2.robjects.packages import importr
-    #     from rpy2.robjects.vectors import StrVector
-    #     base = rpackages.importr('base')  # setting up r environment and installing necessary packages
-    #     utils = rpackages.importr('utils')
-    #     utils.chooseCRANmirror(ind = 1)
-    #     packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
-    #     names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
-    #     if len(names) > 0:
-    #         utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
-    #     dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-    #     robjects.r('''
-    #     cdc_scrape <- function(dir) {
-    #         library(cdcfluview)
-    #         library(hrbrthemes)
-    #         library(tidyverse)
-    #
-    #         #Get National ILI CSV and latest WHO CSV
-    #         national_ili <- ilinet("national")
-    #         national_who <- who_nrevss("national", years = 2018)
-    #         dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
-    #         write.csv(national_ili, file = dir1, na = "")
-    #         dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
-    #         write.csv(national_who, file = dir2, na = "")
-    #
-    #         #Get State ILI CSV and latest WHO CSV
-    #         state_ili <- ilinet("state")
-    #         dir3 = paste(dir, "/ILIData_States.csv", sep = "")
-    #         write.csv(state_ili, file = dir3, na = "")
-    #         state_who <- who_nrevss("state", years = 2018)
-    #         dir4 = paste(dir, "/WHOData_States.csv", sep = "")
-    #         write.csv(state_who, file = dir4, na = "") }
-    #         ''')
-    #
-    #         # r function that scrapes cdc data
-    #         # creates function called "cdc_scrape" that takes in needed directory
-    #
-    #     cdc_scrape = robjects.r['cdc_scrape'] # stores r function
-    #     cdc_scrape(dir) # calls r function, passing directory to place data
-    # except Exception:
-    dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-    driver = chromeSetUp()
-    driver.get("https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html")
-    time.sleep(1)
-    disclaimer = driver.find_element_by_xpath("//button[@aria-label='Click to run the application.']")
-    disclaimer.click()
-    get_to_download(driver)
-    nat_dir = create_dir(dir + '/National')
-    params = {'behavior': 'allow', 'downloadPath': nat_dir}
-    driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
-    # download_data = driver.find_element_by_xpath("//button[@title='Download Data']")
-    download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
-    download_data.click()
-    while(True):
-        if os.path.exists(nat_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
-            break
-    time.sleep(1)
-    state_dir = create_dir(dir + '/State')
-    params = {'behavior': 'allow', 'downloadPath': state_dir}
-    driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
-    get_to_download(driver)
-    select_state = driver.find_element_by_id("5")
-    select_state.click()
-    select_all_regions = driver.find_element_by_xpath("//input[@ng-model='isAllRegions']")
-    select_all_regions.click()
-    download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
-    download_data.click()
-    while(True):
-        if os.path.exists(state_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
-            break
+    try:
+        import rpy2.robjects as robjects
+        import rpy2.robjects.packages as rpackages
+        from rpy2.robjects.packages import importr
+        from rpy2.robjects.vectors import StrVector
+        base = rpackages.importr('base')  # setting up r environment and installing necessary packages
+        utils = rpackages.importr('utils')
+        utils.chooseCRANmirror(ind = 1)
+        packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
+        names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
+        if len(names) > 0:
+            utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
+        dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
+        robjects.r('''
+        cdc_scrape <- function(dir) {
+            library(cdcfluview)
+            library(hrbrthemes)
+            library(tidyverse)
+
+            #Get National ILI CSV and latest WHO CSV
+            national_ili <- ilinet("national")
+            national_who <- who_nrevss("national", years = 2018)
+            dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
+            write.csv(national_ili, file = dir1, na = "")
+            dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
+            write.csv(national_who, file = dir2, na = "")
+
+            #Get State ILI CSV and latest WHO CSV
+            state_ili <- ilinet("state")
+            dir3 = paste(dir, "/ILIData_States.csv", sep = "")
+            write.csv(state_ili, file = dir3, na = "")
+            state_who <- who_nrevss("state", years = 2018)
+            dir4 = paste(dir, "/WHOData_States.csv", sep = "")
+            write.csv(state_who, file = dir4, na = "") }
+            ''')
+
+            # r function that scrapes cdc data
+            # creates function called "cdc_scrape" that takes in needed directory
+
+        cdc_scrape = robjects.r['cdc_scrape'] # stores r function
+        cdc_scrape(dir) # calls r function, passing directory to place data
+    except Exception:
+        dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
+        driver = chromeSetUp()
+        driver.get("https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html")
+        time.sleep(1)
+        disclaimer = driver.find_element_by_xpath("//button[@aria-label='Click to run the application.']")
+        disclaimer.click()
+        get_to_download(driver)
+        nat_dir = create_dir(dir + '/National')
+        params = {'behavior': 'allow', 'downloadPath': nat_dir}
+        driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
+        # download_data = driver.find_element_by_xpath("//button[@title='Download Data']")
+        download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
+        download_data.click()
+        while(True):
+            if os.path.exists(nat_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
+                break
+        time.sleep(1)
+        state_dir = create_dir(dir + '/State')
+        params = {'behavior': 'allow', 'downloadPath': state_dir}
+        driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
+        get_to_download(driver)
+        select_state = driver.find_element_by_id("5")
+        select_state.click()
+        select_all_regions = driver.find_element_by_xpath("//input[@ng-model='isAllRegions']")
+        select_all_regions.click()
+        download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
+        download_data.click()
+        while(True):
+            if os.path.exists(state_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
+                break
 
 def get_to_download(driver):
     time.sleep(1)
@@ -241,9 +241,9 @@ def refresh(driver): # cancels request when app is stuck
 
 
 dir = directory() # creates base directory
-cdcwho(dir) # scrapes cdc/who data
+# cdcwho(dir) # scrapes cdc/who data
 # while(True):
 #     if datetime.now().strftime("%H:%M:%S") == '00:00:00' # will run program at midnight every day
-# whoflunet(dir) # scrapes flunet data
+whoflunet(dir) # scrapes flunet data
 # pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 # trends_data(dir) # scrapes google trends data
