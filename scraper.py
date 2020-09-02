@@ -8,16 +8,20 @@ from googletrans import Translator
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
-import rpy2.robjects as robjects
-import rpy2.robjects.packages as rpackages
-from rpy2.robjects.packages import importr
-from rpy2.robjects.vectors import StrVector
 
 def directory(): # creates necessary directory for
     dir_loc = os.getcwdb().decode() # gets current directory
     dir_name = 'Database ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     dir = create_dir(dir_loc + '/' + dir_name) # sends name to create_dir() to create main directory that will store everything
     return dir
+
+def chromeSetUp():
+    chromeOptions = Options()
+    if os.environ.get("GOOGLE_CHROME_BIN") != None: chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chromeOptions.headless = True
+    chromeOptions.add_argument("--disable-dev-shm-usage")
+    chromeOptions.add_argument("--no-sandbox")
+    return chromeOptions
 
 def create_dir(dir):
     if not os.path.exists(dir): # checks to ensure no duplicate directories exist (shouldn't ever happen)
@@ -29,11 +33,12 @@ def trends_data(dir):
     level = ['national', 'state', 'metropolitan']
     for area in level:
         trends_scrape(area, dir + '/' + area, pd.read_csv('data/{}.csv'.format(area))['Name'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Code'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Primary Language'].tolist())
+
 def trends_scrape(area, dir, names, codes, language):
     time = 'today 5-y' # time period which google trends wants to extract data
     create_dir(dir) # adds directory for corresponding level
-    for area_count in range(0, 25): # limited range for testing
-    # for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
+    # for area_count in range(0, 5): # for testing
+    for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
         terms = ['flu', 'cough', 'fever', 'tamiflu'] # terms that will be used for scraping
         terms.sort() # sorts terms in alphabetical order (not necessary)
         en_terms = terms # save array of english
@@ -72,61 +77,71 @@ def fix_terms(lang, terms):
         count += 1
     return terms # returns translated terms
 
+
 def cdcwho(dir):
-    base = rpackages.importr('base')  # setting up r environment and installing necessary packages
-    utils = rpackages.importr('utils')
-    utils.chooseCRANmirror(ind = 1)
-    packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
-    names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
-    if len(names) > 0:
-        utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
-    dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-    robjects.r('''
-    cdc_scrape <- function(dir) {
-        library(cdcfluview)
-        library(hrbrthemes)
-        library(tidyverse)
+    try:
+        import rpy2.robjects as robjects
+        import rpy2.robjects.packages as rpackages
+        from rpy2.robjects.packages import importr
+        from rpy2.robjects.vectors import StrVector
+        base = rpackages.importr('base')  # setting up r environment and installing necessary packages
+        utils = rpackages.importr('utils')
+        utils.chooseCRANmirror(ind = 1)
+        packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
+        names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
+        if len(names) > 0:
+            utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
+        dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
+        robjects.r('''
+        cdc_scrape <- function(dir) {
+            library(cdcfluview)
+            library(hrbrthemes)
+            library(tidyverse)
 
-        #Get National ILI CSV and latest WHO CSV
-        national_ili <- ilinet("national")
-        national_who <- who_nrevss("national", years = 2018)
-        dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
-        write.csv(national_ili, file = dir1, na = "")
-        dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
-        write.csv(national_who, file = dir2, na = "")
+            #Get National ILI CSV and latest WHO CSV
+            national_ili <- ilinet("national")
+            national_who <- who_nrevss("national", years = 2018)
+            dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
+            write.csv(national_ili, file = dir1, na = "")
+            dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
+            write.csv(national_who, file = dir2, na = "")
 
-        #Get State ILI CSV and latest WHO CSV
-        state_ili <- ilinet("state")
-        dir3 = paste(dir, "/ILIData_States.csv", sep = "")
-        write.csv(state_ili, file = dir3, na = "")
-        state_who <- who_nrevss("state", years = 2018)
-        dir4 = paste(dir, "/WHOData_States.csv", sep = "")
-        write.csv(state_who, file = dir4, na = "") }
-        ''')
+            #Get State ILI CSV and latest WHO CSV
+            state_ili <- ilinet("state")
+            dir3 = paste(dir, "/ILIData_States.csv", sep = "")
+            write.csv(state_ili, file = dir3, na = "")
+            state_who <- who_nrevss("state", years = 2018)
+            dir4 = paste(dir, "/WHOData_States.csv", sep = "")
+            write.csv(state_who, file = dir4, na = "") }
+            ''')
 
-        # r function that scrapes cdc data
-        # creates function called "cdc_scrape" that takes in needed directory
+            # r function that scrapes cdc data
+            # creates function called "cdc_scrape" that takes in needed directory
 
-    cdc_scrape = robjects.r['cdc_scrape'] # stores r function
-    cdc_scrape(dir) # calls r function, passing directory to place data
+        cdc_scrape = robjects.r['cdc_scrape'] # stores r function
+        cdc_scrape(dir) # calls r function, passing directory to place data
+    except Exception:
+        dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
+        chromeOptions = chromeSetUp()
+
+        # needed url
+        # https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html
+
 
 def whoflunet(dir):
     # reads list of countries that who flnet data exists for
     country_list = pd.read_csv('data/flunetcountrylist.csv')['Countries'].tolist()
-
     dir = create_dir(dir + '/cdc_who_data' + '/International')
-    # turn on option of headless chrome (meaning browser will not open)
-    chromeOptions = Options()
-    chromeOptions.headless = True
-    chromeOptions.add_argument("--disable-dev-shm-usage")
-    chromeOptions.add_argument("--no-sandbox")
-    # get path to location of chrome driver (needed for selenium)
+    chromeOptions = chromeSetUp()
     PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
-    driver = webdriver.Chrome(PATH, options=chromeOptions)
+    try:
+        driver = webdriver.Chrome(PATH, options=chromeOptions)
+    except Exception:
+        driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
-    count = 0
+    # count = 0
     prev_name = ''
     for name in country_list: # loops through list of countries
         DOWNLOAD_PATH = create_dir(dir + '/' + name) # adds a directory for given country
@@ -162,12 +177,15 @@ def whoflunet(dir):
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
         count += 1
-        if count == 5: # limited range for testing
+        if count == 5:
             print('bye')
             break
 
 dir = directory() # creates base directory
-cdcwho(dir) # scrapes cdc/who data
+# cdcwho(dir) # scrapes cdc/who data
+# while(True):
+#     if datetime.now().strftime("%H:%M:%S") == '00:00:00' # will run program at midnight every day
+>>>>>>> server
 whoflunet(dir) # scrapes flunet data
 pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 trends_data(dir) # scrapes google trends data
