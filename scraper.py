@@ -17,10 +17,16 @@ def directory(): # creates necessary directory for
     dir = create_dir(dir_loc + '/' + dir_name) # sends name to create_dir() to create main directory that will store everything
     return dir
 
+def dir_exists(dir): # checks to see if file downloaded before resuming
+    while(True):
+        if os.path.exists(dir): # resumes when .csv is downloaded to desired directory
+            break
+
+
 def chromeSetUp():
     chromeOptions = Options()
     if bool(os.environ.get("GOOGLE_CHROME_BIN")): chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    chromeOptions.headless = True
+    chromeOptions.headless = False
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
     # PATH = os.getcwdb().decode() + '/chromedriver'
@@ -143,9 +149,7 @@ def cdcwho(dir):
         # download_data = driver.find_element_by_xpath("//button[@title='Download Data']")
         download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
         download_data.click()
-        while(True):
-            if os.path.exists(nat_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
-                break
+        dir_exists(nat_dir + '/FluViewPhase2Data.zip')
         time.sleep(1)
         state_dir = create_dir(dir + '/State')
         params = {'behavior': 'allow', 'downloadPath': state_dir}
@@ -157,9 +161,7 @@ def cdcwho(dir):
         select_all_regions.click()
         download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
         download_data.click()
-        while(True):
-            if os.path.exists(state_dir + '/FluViewPhase2Data.zip'): # resumes when .csv is downloaded to desired directory
-                break
+        dir_exists(state_dir + '/FluViewPhase2Data.zip')
 
 def get_to_download(driver):
     time.sleep(1)
@@ -183,7 +185,6 @@ def whoflunet(dir):
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     count = 0
-    stop = None
     prev_name = ''
     for name in country_list: # loops through list of countries
         DOWNLOAD_PATH = create_dir(dir + '/' + name) # adds a directory for given country
@@ -191,15 +192,17 @@ def whoflunet(dir):
         driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
         filter = Select(driver.find_element_by_id("lstSearchBy")) # finds html element where countries are
         filter.select_by_visible_text(name) # selects country for given iteration of loop
-        if prev_name != '': filter.deselect_by_visible_text(prev_name) # deselects previous country used
-        year_from = Select(driver.find_element_by_id("ctl_list_YearFrom")) # finds html element where start year is
-        year_from.select_by_visible_text("2015") # selects start year
-        week_from = Select(driver.find_element_by_id("ctl_list_WeekFrom")) # finds html element where start week is
-        week_from.select_by_visible_text("1") # selects start week
-        year_to = Select(driver.find_element_by_id("ctl_list_YearTo")) # finds html element where end year is
-        year_to.select_by_visible_text("2020") # finds html area where end year is
-        week_to = Select(driver.find_element_by_id("ctl_list_WeekTo"))  # finds html element where end week is
-        week_to.select_by_visible_text("53") # selects end week (doing 53 will give you most recent year)
+        if prev_name != '':
+            filter.deselect_by_visible_text(prev_name) # deselects previous country used
+        else: # selects date range for the first iteration (isn't needed after first time)
+            year_from = Select(driver.find_element_by_id("ctl_list_YearFrom")) # finds html element where start year is
+            year_from.select_by_visible_text("2015") # selects start year
+            week_from = Select(driver.find_element_by_id("ctl_list_WeekFrom")) # finds html element where start week is
+            week_from.select_by_visible_text("1") # selects start week
+            year_to = Select(driver.find_element_by_id("ctl_list_YearTo")) # finds html element where end year is
+            year_to.select_by_visible_text("2020") # finds html area where end year is
+            week_to = Select(driver.find_element_by_id("ctl_list_WeekTo"))  # finds html element where end week is
+            week_to.select_by_visible_text("53") # selects end week (doing 53 will give you most recent year)
         display_report = driver.find_element_by_name("ctl_ViewReport") # finds html element for button that loads spreadsheet
         display_report.click() # click button
         print("Downloading data from " + name)
@@ -215,13 +218,11 @@ def whoflunet(dir):
                 break
             except Exception:
                 end_time = time.time()
-                if end_time - start_time > 200:
+                if end_time - start_time > 240: # if page is still buffering after 4 minutes, it refreshes page
                     refresh(driver)
                     start_time = time.time()
                 pass
-        while(True):
-            if os.path.exists(DOWNLOAD_PATH + '/FluNetInteractiveReport.csv'): # resumes when .csv is downloaded to desired directory
-                break
+        dir_exists(DOWNLOAD_PATH + '/FluNetInteractiveReport.csv')
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded")
         # count += 1
@@ -229,13 +230,12 @@ def whoflunet(dir):
         #     print('bye')
         #     break
 
-def refresh(driver): # cancels request when app is stuck
+def refresh(driver): # refreshes webpage
     cancel = driver.find_element_by_link_text('Cancel')
     cancel.click()
-    print("Cancelled download: Process frozen. Resubmitting request in five seconds.")
+    print("Cancelled download: Process frozen. Refreshing page in five seconds.")
     time.sleep(5)
-    view_report = driver.find_element_by_id("ctl_ReportViewer_ctl04_ctl00") # finds html element for button that loads spreadsheet
-    view_report.click() # click button
+    driver.refresh()
     print("Refreshed")
 
 
