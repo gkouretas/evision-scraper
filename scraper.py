@@ -169,6 +169,7 @@ def whoflunet(dir):
         display_report = driver.find_element_by_name("ctl_ViewReport") # finds html element for button that loads spreadsheet
         display_report.click() # click button
         print("Downloading data from " + name)
+        print(DOWNLOAD_PATH)
         while(True):
             try: # continually attempts while loading; will execute when spreadsheet gets loaded. time varies depending on how much data you're attempting to extract
                 find_download = driver.find_element_by_id("ctl_ReportViewer_ctl05_ctl04_ctl00_ButtonLink") # finds dropdown element that allows for desired download format
