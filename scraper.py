@@ -18,10 +18,10 @@ def directory(): # creates necessary directory for
 def chromeSetUp():
     chromeOptions = Options()
     if bool(os.environ.get("GOOGLE_CHROME_BIN")): chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    # chromeOptions.headless = True
+    chromeOptions.headless = True
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
-    # PATH = os.getcwdb().decode() + '/chromedriver'
+    PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
     try:
         PATH = os.getcwdb().decode() + '/chromedriver'
