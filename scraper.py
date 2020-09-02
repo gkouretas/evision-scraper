@@ -21,7 +21,14 @@ def chromeSetUp():
     chromeOptions.headless = True
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
-    return chromeOptions
+    # PATH = os.getcwdb().decode() + '/chromedriver'
+    # webdriver executes chrome and goes to flunet app
+    try:
+        PATH = os.getcwdb().decode() + '/chromedriver'
+        driver = webdriver.Chrome(PATH, options=chromeOptions)
+    except Exception:
+        driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
+    return driver
 
 def create_dir(dir):
     if not os.path.exists(dir): # checks to ensure no duplicate directories exist (shouldn't ever happen)
@@ -122,8 +129,9 @@ def cdcwho(dir):
         cdc_scrape(dir) # calls r function, passing directory to place data
     except Exception:
         dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-        chromeOptions = chromeSetUp()
-
+        driver = chromeSetUp()
+        driver.get("https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html")
+        params = {'behavior': 'allow', 'downloadPath': dir}
         # needed url
         # https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html
 
@@ -132,13 +140,13 @@ def whoflunet(dir):
     # reads list of countries that who flnet data exists for
     country_list = pd.read_csv('data/flunetcountrylist.csv')['Countries'].tolist()
     dir = create_dir(dir + '/cdc_who_data' + '/International')
-    chromeOptions = chromeSetUp()
-    PATH = os.getcwdb().decode() + '/chromedriver'
-    # webdriver executes chrome and goes to flunet app
-    try:
-        driver = webdriver.Chrome(PATH, options=chromeOptions)
-    except Exception:
-        driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
+    driver = chromeSetUp()
+    # PATH = os.getcwdb().decode() + '/chromedriver'
+    # # webdriver executes chrome and goes to flunet app
+    # try:
+    #     driver = webdriver.Chrome(PATH, options=chromeOptions)
+    # except Exception:
+    #     driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
     # count = 0
