@@ -26,7 +26,7 @@ def dir_exists(dir): # checks to see if file downloaded before resuming
 def chromeSetUp():
     chromeOptions = Options()
     if bool(os.environ.get("GOOGLE_CHROME_BIN")): chromeOptions.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    chromeOptions.headless = False
+    chromeOptions.headless = True
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
     # PATH = os.getcwdb().decode() + '/chromedriver'
