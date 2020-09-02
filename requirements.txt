@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-pandas==1.0.1
-pytrends==4.7.2
-rpy2==3.3.5
-googletrans==3.0.0
-selenium==3.141.0
-=======
 rpy2==3.3.5
 selenium==3.141.0
 googletrans==3.0.0
 pytrends==4.7.2
 pandas==1.0.1
->>>>>>> server
