@@ -36,12 +36,15 @@ If you are not on MacOS, you may need to change the paths to find some of the fi
 
 If you are deploying this scraper on Heroku, you need to add some necessary additions in order for compatibility with selenium.  Under "Config Vars" in your app's settings, you will need to add the following:
 
-KEY: CHROMEDRIVER_PATH  VALUE: /app/.chromedriver/bin/chromedriver
-KEY: GOOGLE_CHROME_BIN  VALUE: /app/.apt/usr/bin/google-chrome
+| KEY | VALUE |
+| --- | ----- |
+CHROMEDRIVER_PATH  | /app/.chromedriver/bin/chromedriver
+GOOGLE_CHROME_BIN  | /app/.apt/usr/bin/google-chrome
 
 You will also need to add the corresponding buildpacks, which can be done by entering the following links into your buildpacks:
 
-https://github.com/heroku/heroku-buildpack-google-chrome
-https://github.com/heroku/heroku-buildpack-chromedriver
+https://github.com/heroku/heroku-buildpack-google-chrome<br />https://github.com/heroku/heroku-buildpack-chromedriver
+
+
 
 More information on this can be found at <a href="https://www.youtube.com/watch?v=Ven-pqwk3ec">this</a> YouTube video
