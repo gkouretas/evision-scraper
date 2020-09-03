@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import time
 import random
+import zipfile
 from pytrends.request import TrendReq
 from datetime import datetime
 from googletrans import Translator
@@ -27,7 +28,6 @@ def chromeSetUp():
     chromeOptions.headless = False
     chromeOptions.add_argument("--disable-dev-shm-usage")
     chromeOptions.add_argument("--no-sandbox")
-    # PATH = os.getcwdb().decode() + '/chromedriver'
     # webdriver executes chrome and goes to flunet app
     try:
         PATH = os.getcwdb().decode() + '/chromedriver'
@@ -94,57 +94,17 @@ def fix_terms(lang, terms):
         count += 1
     return terms # returns translated terms
 
-
 def cdcwho(dir):
-    # try:
-    #     import rpy2.robjects as robjects
-    #     import rpy2.robjects.packages as rpackages
-    #     from rpy2.robjects.packages import importr
-    #     from rpy2.robjects.vectors import StrVector
-    #     base = rpackages.importr('base')  # setting up r environment and installing necessary packages
-    #     utils = rpackages.importr('utils')
-    #     utils.chooseCRANmirror(ind = 1)
-    #     packnames = ('cdcfluview', 'hrbrthemes', 'tidyverse') # list of packages needed
-    #     names = [x for x in packnames if not rpackages.isinstalled(x)] # checks if packages are installed
-    #     if len(names) > 0:
-    #         utils.install_packages(StrVector(names)) # installs necessary packages if they are not already installed
-    #     dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
-    #     robjects.r('''
-    #     cdc_scrape <- function(dir) {
-    #         library(cdcfluview)
-    #         library(hrbrthemes)
-    #         library(tidyverse)
-    #
-    #         #Get National ILI CSV and latest WHO CSV
-    #         national_ili <- ilinet("national")
-    #         national_who <- who_nrevss("national", years = 2018)
-    #         dir1 = paste(dir, "/ILIData_USA.csv", sep = "")
-    #         write.csv(national_ili, file = dir1, na = "")
-    #         dir2 = paste(dir, "/WHOData_USA.csv", sep = "")
-    #         write.csv(national_who, file = dir2, na = "")
-    #
-    #         #Get State ILI CSV and latest WHO CSV
-    #         state_ili <- ilinet("state")
-    #         dir3 = paste(dir, "/ILIData_States.csv", sep = "")
-    #         write.csv(state_ili, file = dir3, na = "")
-    #         state_who <- who_nrevss("state", years = 2018)
-    #         dir4 = paste(dir, "/WHOData_States.csv", sep = "")
-    #         write.csv(state_who, file = dir4, na = "") }
-    #         ''')
-    #
-    #         # r function that scrapes cdc data
-    #         # creates function called "cdc_scrape" that takes in needed directory
-    #
-    #     cdc_scrape = robjects.r['cdc_scrape'] # stores r function
-    #     cdc_scrape(dir) # calls r function, passing directory to place data
-    #
-    # except Exception:
     dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
     driver = chromeSetUp()
     start = time.time()
     driver.get("https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html")
-    time.sleep(1)
-    disclaimer = driver.find_element_by_xpath("//button[@aria-label='Click to run the application.']")
+    while(True):
+        try:
+            disclaimer = driver.find_element_by_xpath("//button[@aria-label='Click to run the application.']")
+            break
+        except Exception:
+            pass
     disclaimer.click()
     get_to_download(driver)
     nat_dir = create_dir(dir + '/National')
@@ -154,7 +114,6 @@ def cdcwho(dir):
     download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
     download_data.click()
     dir_exists(nat_dir + '/FluViewPhase2Data.zip')
-    time.sleep(1)
     state_dir = create_dir(dir + '/State')
     params = {'behavior': 'allow', 'downloadPath': state_dir}
     driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
@@ -167,12 +126,22 @@ def cdcwho(dir):
     download_data.click()
     dir_exists(state_dir + '/FluViewPhase2Data.zip')
     print("CDC/WHO data scraped (Time elapsed: " + str(round(time.time() - start)) + " sec.)")
+    driver.close()
+    extract_zip([nat_dir + '/FluViewPhase2Data.zip', state_dir + '/FluViewPhase2Data.zip'])
+
+def extract_zip(list):
+    for zip in list:
+        with zipfile.ZipFile(zip, "r") as zip_ref:
+            zip_ref.extractall(zip.split('/FluViewPhase2Data.zip')[0])
+            os.remove(zip)
 
 def get_to_download(driver):
-    time.sleep(1)
-    download = driver.find_element_by_xpath("//button[@aria-label='Click to download the flu data for the selected season.']")
-    download.click()
-    time.sleep(1)
+    while(True):
+        try:
+            download = driver.find_element_by_xpath("//button[@aria-label='Click to download the flu data for the selected season.']")
+            download.click()
+        except Exception:
+            pass
     select_all_seasons = driver.find_element_by_xpath("//input[@ng-model='isAllSeasons']")
     select_all_seasons.click()
 
@@ -192,6 +161,7 @@ def whoflunet(dir):
     count = 0
     prev_name = ''
     for name in country_list: # loops through list of countries
+        if name == 'Montserrat': continue # montserrat is not compatible for some reason
         DOWNLOAD_PATH = create_dir(dir + '/' + name) # adds a directory for given country
         params = {'behavior': 'allow', 'downloadPath': DOWNLOAD_PATH}
         driver.execute_cdp_cmd('Page.setDownloadBehavior', params) # changes download path to chosen directory
@@ -222,7 +192,7 @@ def whoflunet(dir):
                 break
             except Exception:
                 end = time.time() # sets time of failure (failure meaning the page is still loading)
-                if end - start > 240: # if page is still buffering after 4 minutes, it refreshes page
+                if end - start > 20: # if page is still buffering after 4 minutes, it refreshes page
                     refresh(driver)
                     start = time.time() # resets start time to correspond with the page getting refreshed
                 pass
@@ -233,9 +203,13 @@ def whoflunet(dir):
         # if count == 5:
         #     print('bye')
         #     break
+    driver.close()
 
 def refresh(driver): # refreshes webpage
-    cancel = driver.find_element_by_link_text('Cancel')
+    try:
+        cancel = driver.find_element_by_link_text('Cancel')
+    except Exception:
+        pass
     cancel.click()
     print("Cancelled download: Process frozen. Refreshing page in five seconds.")
     time.sleep(5)
@@ -245,8 +219,8 @@ def refresh(driver): # refreshes webpage
 
 
 dir = directory() # creates base directory
-# cdcwho(dir) # scrapes cdc/who data
-whoflunet(dir) # scrapes flunet data
+cdcwho(dir) # scrapes cdc/who data
+# whoflunet(dir) # scrapes flunet data
 # pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 # trends_data(dir) # scrapes google trends data
 
