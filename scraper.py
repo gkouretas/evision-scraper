@@ -46,12 +46,12 @@ def trends_data(dir):
     dir = create_dir(dir + '/google_trends') # adds directory for google trends
     level = ['national', 'state', 'metropolitan']
     for area in level:
-        print("Scraping " + area + " data")
+        print("Scraping " + area + " level data")
         trends_scrape(area, dir + '/' + area, pd.read_csv('data/{}.csv'.format(area))['Name'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Code'].tolist(), pd.read_csv('data/{}.csv'.format(area))['Primary Language'].tolist())
-        print(area + " scraping complete")
+        print(area + " level data scraping complete")
 
 def trends_scrape(area, dir, names, codes, language):
-    time = 'today 5-y' # time period which google trends wants to extract data
+    date_range = 'today 5-y' # time period which google trends wants to extract data
     create_dir(dir) # adds directory for corresponding level
     for area_count in range(0, 5): # for testing
     # for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
@@ -68,13 +68,13 @@ def trends_scrape(area, dir, names, codes, language):
                     print('Extracting search term ' + terms[search_count % len(terms)] + ' from ' + names[area_count] + ' at ' + datetime.now().strftime('%H:%M:%S'))
                     print(codes[area_count])
                     start = time.time()
-                    pytrends.build_payload(kw_list= [terms[search_count % len(terms)]], timeframe = time, geo = codes[area_count]) # sends parameters to google trends
+                    pytrends.build_payload(kw_list= [terms[search_count % len(terms)]], timeframe = date_range, geo = codes[area_count]) # sends parameters to google trends
                     ggl = pytrends.interest_over_time() # extracts google terms table
                     ggl = ggl.drop(columns = 'isPartial') # eliminates columns that are labeled 'isPartial'
                     area_dir = create_dir(dir + '/' + names[area_count]) # adds directory for area
                     ggl.to_csv(area_dir + '/GGL{}{}Weekly.csv'.format(codes[area_count], en_terms[search_count % len(terms)].replace(" ", ""))) # generating csv in area's directory
                     search_count += 1 # incrementing search count
-                    print('Scraping finished (Time elapsed: ' + str(round(time.time() - start), 1) + ' sec.)')
+                    print('Scraping finished (Time elapsed: ' + str(round(time.time() - start, 1)) + ' sec.)')
                 except Exception:
                     # increments search count to skip over failed search result.
                     # will occur when there is not sufficient google trends data
@@ -201,7 +201,7 @@ def whoflunet(dir):
                 break
             except Exception:
                 end = time.time() # sets time of failure (failure meaning the page is still loading)
-                if end - start > 240: # if page is still buffering after 4 minutes, it refreshes page
+                if end - start > 300: # if page is still buffering after 5 minutes, it refreshes page
                     refresh(driver)
                     start = time.time() # resets start time to correspond with the page getting refreshed
                 pass
