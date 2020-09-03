@@ -201,7 +201,7 @@ def whoflunet(dir):
                 break
             except Exception:
                 end = time.time() # sets time of failure (failure meaning the page is still loading)
-                if end - start > 20: # if page is still buffering after 4 minutes, it refreshes page
+                if end - start > 240: # if page is still buffering after 4 minutes, it refreshes page
                     refresh(driver)
                     start = time.time() # resets start time to correspond with the page getting refreshed
                 pass
