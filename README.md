@@ -16,7 +16,6 @@ The libraries that are required for this module are:
 * pytrends
 * googletrans
 * selenium
-* rpy2
 
 Your computer will also require an installation of Google Chrome in order for selenium to work.  For the chromedriver attached to the file, your Google Chrome will need to be Version 85.x.  Information on your Chrome's version can be found under:
 
