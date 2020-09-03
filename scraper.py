@@ -30,7 +30,7 @@ def chromeSetUp():
     chromeOptions.add_argument("--no-sandbox")
     # webdriver executes chrome and goes to flunet app
     try:
-        PATH = os.getcwdb().decode() + '/chromedriver'
+        PATH = '/Users/georgekouretas/Desktop/chromedriver' # path to location of your chromedriver goes here
         driver = webdriver.Chrome(PATH, options=chromeOptions)
     except Exception:
         driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)
