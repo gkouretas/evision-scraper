@@ -217,21 +217,19 @@ def whoflunet(dir):
 def refresh(driver): # refreshes webpage
     try:
         cancel = driver.find_element_by_link_text('Cancel')
+        cancel.click()
     except Exception:
         pass
-    cancel.click()
     print("Cancelled download: Process frozen. Refreshing page in five seconds.")
     time.sleep(5)
     driver.refresh()
     print("Refreshed")
 
-
-
 dir = directory() # creates base directory
-cdcwho(dir) # scrapes cdc/who data
-whoflunet(dir) # scrapes flunet data
 pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 trends_data(dir) # scrapes google trends data
+cdcwho(dir) # scrapes cdc/who data
+whoflunet(dir) # scrapes flunet data
 
 # if [ "$(date +%u)" = 1 ]; then python scraper.py; fi
 # this will run the program every monday
