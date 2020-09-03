@@ -95,6 +95,7 @@ def fix_terms(lang, terms):
     return terms # returns translated terms
 
 def cdcwho(dir):
+    print("Scraping CDC ILI and WHO NREVSS Data")
     dir = create_dir(dir + '/cdc_who_data' + '/United States') # creates directory for cdc/who data
     driver = chromeSetUp()
     start = time.time()
@@ -113,6 +114,7 @@ def cdcwho(dir):
     # download_data = driver.find_element_by_xpath("//button[@title='Download Data']")
     download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
     download_data.click()
+    print("National data downloaded")
     dir_exists(nat_dir + '/FluViewPhase2Data.zip')
     state_dir = create_dir(dir + '/State')
     params = {'behavior': 'allow', 'downloadPath': state_dir}
@@ -124,26 +126,33 @@ def cdcwho(dir):
     select_all_regions.click()
     download_data = driver.find_element_by_xpath("//button[@aria-label='Click to download the data and leave the data download panel.']")
     download_data.click()
+    print("State data downloaded")
     dir_exists(state_dir + '/FluViewPhase2Data.zip')
     print("CDC/WHO data scraped (Time elapsed: " + str(round(time.time() - start)) + " sec.)")
     driver.close()
     extract_zip([nat_dir + '/FluViewPhase2Data.zip', state_dir + '/FluViewPhase2Data.zip'])
-
-def extract_zip(list):
-    for zip in list:
-        with zipfile.ZipFile(zip, "r") as zip_ref:
-            zip_ref.extractall(zip.split('/FluViewPhase2Data.zip')[0])
-            os.remove(zip)
 
 def get_to_download(driver):
     while(True):
         try:
             download = driver.find_element_by_xpath("//button[@aria-label='Click to download the flu data for the selected season.']")
             download.click()
+            break
         except Exception:
             pass
-    select_all_seasons = driver.find_element_by_xpath("//input[@ng-model='isAllSeasons']")
-    select_all_seasons.click()
+    while(True):
+        try:
+            select_all_seasons = driver.find_element_by_xpath("//input[@ng-model='isAllSeasons']")
+            select_all_seasons.click()
+            break
+        except Exception:
+            pass
+
+def extract_zip(list):
+    for zip in list:
+        with zipfile.ZipFile(zip, "r") as zip_ref:
+            zip_ref.extractall(zip.split('/FluViewPhase2Data.zip')[0])
+            os.remove(zip)
 
 def whoflunet(dir):
     # reads list of countries that who flnet data exists for
@@ -220,9 +229,9 @@ def refresh(driver): # refreshes webpage
 
 dir = directory() # creates base directory
 cdcwho(dir) # scrapes cdc/who data
-# whoflunet(dir) # scrapes flunet data
-# pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
-# trends_data(dir) # scrapes google trends data
+whoflunet(dir) # scrapes flunet data
+pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
+trends_data(dir) # scrapes google trends data
 
 # if [ "$(date +%u)" = 1 ]; then python scraper.py; fi
 # this will run the program every monday
