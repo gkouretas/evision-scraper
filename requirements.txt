@@ -1,5 +1,4 @@
-psycopg2==2.8.6
-translators==4.9.5
-selenium==3.141.0
-pytrends==4.7.2
 pandas==1.0.1
+pytrends==4.7.2
+selenium==3.141.0
+translators==4.9.5
