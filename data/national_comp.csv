@@ -1,0 +1,251 @@
+Code,Name,Continent,Languages,Primary Language
+AD,Andorra,Europe,ca,ca
+AE,United Arab Emirates,Asia,ar,ar
+AF,Afghanistan,Asia,"ps,uz,tk",ps
+AG,Antigua and Barbuda,North America,en,en
+AI,Anguilla,North America,en,en
+AL,Albania,Europe,sq,sq
+AM,Armenia,Asia,"hy,ru",hy
+AO,Angola,Africa,pt,pt
+AQ,Antarctica,Antarctica,en,en
+AR,Argentina,South America,"es,gn",es
+AS,American Samoa,Oceania,"en,sm",en
+AT,Austria,Europe,de,de
+AU,Australia,Oceania,en,en
+AW,Aruba,North America,"nl,pa",nl
+AX,Åland,Europe,sv,sv
+AZ,Azerbaijan,Asia,az,az
+BA,Bosnia and Herzegovina,Europe,"bs,hr,sr",bs
+BB,Barbados,North America,en,en
+BD,Bangladesh,Asia,bn,bn
+BE,Belgium,Europe,"nl,fr,de",nl
+BF,Burkina Faso,Africa,"fr,ff",fr
+BG,Bulgaria,Europe,bg,bg
+BH,Bahrain,Asia,ar,ar
+BI,Burundi,Africa,"fr,rn",fr
+BJ,Benin,Africa,fr,fr
+BL,Saint Barthélemy,North America,fr,fr
+BM,Bermuda,North America,en,en
+BN,Brunei,Asia,ms,ms
+BO,Bolivia,South America,"es,ay,qu",es
+BQ,Bonaire,North America,nl,nl
+BR,Brazil,South America,pt,pt
+BS,Bahamas,North America,en,en
+BT,Bhutan,Asia,dz,dz
+BV,Bouvet Island,Antarctica,"no,nb,nn",no
+BW,Botswana,Africa,"en,tn",en
+BY,Belarus,Europe,"be,ru",be
+BZ,Belize,North America,"en,es",en
+CA,Canada,North America,"en,fr",en
+CC,Cocos [Keeling] Islands,Asia,en,en
+CD,Democratic Republic of the Congo,Africa,"fr,ln,kg,sw,lu",fr
+CF,Central African Republic,Africa,"fr,sg",fr
+CG,Republic of the Congo,Africa,"fr,ln",fr
+CH,Switzerland,Europe,"de,fr,it",de
+CI,Ivory Coast,Africa,fr,fr
+CK,Cook Islands,Oceania,en,en
+CL,Chile,South America,es,es
+CM,Cameroon,Africa,"en,fr",en
+CN,China,Asia,zh,zh-cn
+CO,Colombia,South America,es,es
+CR,Costa Rica,North America,es,es
+CU,Cuba,North America,es,es
+CV,Cape Verde,Africa,pt,pt
+CW,Curacao,North America,"nl,pa,en",nl
+CX,Christmas Island,Asia,en,en
+CY,Cyprus,Europe,"el,tr,hy",el
+CZ,Czech Republic,Europe,"cs,sk",cs
+DE,Germany,Europe,de,de
+DJ,Djibouti,Africa,"fr,ar",fr
+DK,Denmark,Europe,da,da
+DM,Dominica,North America,en,en
+DO,Dominican Republic,North America,es,es
+DZ,Algeria,Africa,ar,ar
+EC,Ecuador,South America,es,es
+EE,Estonia,Europe,et,et
+EG,Egypt,Africa,ar,ar
+EH,Western Sahara,Africa,es,es
+ER,Eritrea,Africa,"ti,ar,en",ti
+ES,Spain,Europe,"es,eu,ca,gl,oc",es
+ET,Ethiopia,Africa,am,am
+FI,Finland,Europe,"fi,sv",fi
+FJ,Fiji,Oceania,"en,fj,hi,ur",en
+FK,Falkland Islands,South America,en,en
+FM,Micronesia,Oceania,en,en
+FO,Faroe Islands,Europe,fo,fo
+FR,France,Europe,fr,fr
+GA,Gabon,Africa,fr,fr
+GB,United Kingdom,Europe,en,en
+GD,Grenada,North America,en,en
+GE,Georgia,Asia,ka,ka
+GF,French Guiana,South America,fr,fr
+GG,Guernsey,Europe,"en,fr",en
+GH,Ghana,Africa,en,en
+GI,Gibraltar,Europe,en,en
+GL,Greenland,North America,kl,kl
+GM,Gambia,Africa,en,en
+GN,Guinea,Africa,"fr,ff",fr
+GP,Guadeloupe,North America,fr,fr
+GQ,Equatorial Guinea,Africa,"es,fr",es
+GR,Greece,Europe,el,el
+GS,South Georgia and the South Sandwich Islands,Antarctica,en,en
+GT,Guatemala,North America,es,es
+GU,Guam,Oceania,"en,ch,es",en
+GW,Guinea-Bissau,Africa,pt,pt
+GY,Guyana,South America,en,en
+HK,Hong Kong,Asia,"zh,en",zh-tw
+HM,Heard Island and McDonald Islands,Antarctica,en,en
+HN,Honduras,North America,es,es
+HR,Croatia,Europe,hr,hr
+HT,Haiti,North America,"fr,ht",fr
+HU,Hungary,Europe,hu,hu
+ID,Indonesia,Asia,id,id
+IE,Ireland,Europe,"ga,en",ga
+IL,Israel,Asia,"he,ar",he
+IM,Isle of Man,Europe,"en,gv",en
+IN,India,Asia,"hi,en",hi
+IO,British Indian Ocean Territory,Asia,en,en
+IQ,Iraq,Asia,"ar,ku",ar
+IR,Iran,Asia,fa,fa
+IS,Iceland,Europe,is,is
+IT,Italy,Europe,it,it
+JE,Jersey,Europe,"en,fr",en
+JM,Jamaica,North America,en,en
+JO,Jordan,Asia,ar,ar
+JP,Japan,Asia,ja,ja
+KE,Kenya,Africa,"en,sw",en
+KG,Kyrgyzstan,Asia,"ky,ru",ky
+KH,Cambodia,Asia,km,km
+KI,Kiribati,Oceania,en,en
+KM,Comoros,Africa,"ar,fr",ar
+KN,Saint Kitts and Nevis,North America,en,en
+KP,North Korea,Asia,ko,ko
+KR,South Korea,Asia,ko,ko
+KW,Kuwait,Asia,ar,ar
+KY,Cayman Islands,North America,en,en
+KZ,Kazakhstan,Asia,"kk,ru",kk
+LA,Laos,Asia,lo,lo
+LB,Lebanon,Asia,"ar,fr",ar
+LC,Saint Lucia,North America,en,en
+LI,Liechtenstein,Europe,de,de
+LK,Sri Lanka,Asia,"si,ta",si
+LR,Liberia,Africa,en,en
+LS,Lesotho,Africa,"en,st",en
+LT,Lithuania,Europe,lt,lt
+LU,Luxembourg,Europe,"fr,de,lb",fr
+LV,Latvia,Europe,lv,lv
+LY,Libya,Africa,ar,ar
+MA,Morocco,Africa,ar,ar
+MC,Monaco,Europe,fr,fr
+MD,Moldova,Europe,ro,ro
+ME,Montenegro,Europe,"sr,bs,sq,hr",sr
+MF,Saint Martin,North America,"en,fr,nl",en
+MG,Madagascar,Africa,"fr,mg",fr
+MH,Marshall Islands,Oceania,"en,mh",en
+MK,North Macedonia,Europe,mk,mk
+ML,Mali,Africa,fr,fr
+MM,Myanmar [Burma],Asia,my,my
+MN,Mongolia,Asia,mn,mn
+MO,Macao,Asia,"zh,pt",zh-tw
+MP,Northern Mariana Islands,Oceania,"en,ch",en
+MQ,Martinique,North America,fr,fr
+MR,Mauritania,Africa,ar,ar
+MS,Montserrat,North America,en,en
+MT,Malta,Europe,"mt,en",mt
+MU,Mauritius,Africa,en,en
+MV,Maldives,Asia,dv,dv
+MW,Malawi,Africa,"en,ny",en
+MX,Mexico,North America,es,es
+MY,Malaysia,Asia,ms,ms
+MZ,Mozambique,Africa,pt,pt
+NA,Namibia,Africa,"en,af",en
+NC,New Caledonia,Oceania,fr,fr
+NE,Niger,Africa,fr,fr
+NF,Norfolk Island,Oceania,en,en
+NG,Nigeria,Africa,en,en
+NI,Nicaragua,North America,es,es
+NL,Netherlands,Europe,nl,nl
+NO,Norway,Europe,"no,nb,nn",no
+NP,Nepal,Asia,ne,ne
+NR,Nauru,Oceania,"en,na",en
+NU,Niue,Oceania,en,en
+NZ,New Zealand,Oceania,"en,mi",en
+OM,Oman,Asia,ar,ar
+PA,Panama,North America,es,es
+PE,Peru,South America,es,es
+PF,French Polynesia,Oceania,fr,fr
+PG,Papua New Guinea,Oceania,en,en
+PH,Philippines,Asia,en,en
+PK,Pakistan,Asia,"en,ur",en
+PL,Poland,Europe,pl,pl
+PM,Saint Pierre and Miquelon,North America,fr,fr
+PN,Pitcairn Islands,Oceania,en,en
+PR,Puerto Rico,North America,"es,en",es
+PS,Palestine,Asia,ar,ar
+PT,Portugal,Europe,pt,pt
+PW,Palau,Oceania,en,en
+PY,Paraguay,South America,"es,gn",es
+QA,Qatar,Asia,ar,ar
+RE,Réunion,Africa,fr,fr
+RO,Romania,Europe,ro,ro
+RS,Serbia,Europe,sr,sr
+RU,Russia,Europe,ru,ru
+RW,Rwanda,Africa,"rw,en,fr",rw
+SA,Saudi Arabia,Asia,ar,ar
+SB,Solomon Islands,Oceania,en,en
+SC,Seychelles,Africa,"fr,en",fr
+SD,Sudan,Africa,"ar,en",ar
+SE,Sweden,Europe,sv,sv
+SG,Singapore,Asia,"en,ms,ta,zh",en
+SH,Saint Helena,Africa,en,en
+SI,Slovenia,Europe,sl,sl
+SJ,Svalbard and Jan Mayen,Europe,no,no
+SK,Slovakia,Europe,sk,sk
+SL,Sierra Leone,Africa,en,en
+SM,San Marino,Europe,it,it
+SN,Senegal,Africa,fr,fr
+SO,Somalia,Africa,"so,ar",so
+SR,Suriname,South America,nl,nl
+SS,South Sudan,Africa,en,en
+ST,São Tomé and Príncipe,Africa,pt,pt
+SV,El Salvador,North America,es,es
+SX,Sint Maarten,North America,"nl,en",nl
+SY,Syria,Asia,ar,ar
+SZ,Swaziland,Africa,"en,ss",en
+TC,Turks and Caicos Islands,North America,en,en
+TD,Chad,Africa,"fr,ar",fr
+TF,French Southern Territories,Antarctica,fr,fr
+TG,Togo,Africa,fr,fr
+TH,Thailand,Asia,th,th
+TJ,Tajikistan,Asia,"tg,ru",tg
+TK,Tokelau,Oceania,en,en
+TL,East Timor,Oceania,pt,pt
+TM,Turkmenistan,Asia,"tk,ru",tk
+TN,Tunisia,Africa,ar,ar
+TO,Tonga,Oceania,"en,to",en
+TR,Turkey,Asia,tr,tr
+TT,Trinidad and Tobago,North America,en,en
+TV,Tuvalu,Oceania,en,en
+TW,Taiwan,Asia,zh,zh-tw
+TZ,Tanzania,Africa,"sw,en",sw
+UA,Ukraine,Europe,uk,uk
+UG,Uganda,Africa,"en,sw",en
+UM,U.S. Minor Outlying Islands,Oceania,en,en
+US,United States,North America,en,en
+UY,Uruguay,South America,es,es
+UZ,Uzbekistan,Asia,"uz,ru",uz
+VA,Vatican City,Europe,"it,la",it
+VC,Saint Vincent and the Grenadines,North America,en,en
+VE,Venezuela,South America,es,es
+VG,British Virgin Islands,North America,en,en
+VI,U.S. Virgin Islands,North America,en,en
+VN,Vietnam,Asia,vi,vi
+VU,Vanuatu,Oceania,"bi,en,fr",bi
+WF,Wallis and Futuna,Oceania,fr,fr
+WS,Samoa,Oceania,"sm,en",sm
+XK,Kosovo,Europe,"sq,sr",sq
+YE,Yemen,Asia,ar,ar
+YT,Mayotte,Africa,fr,fr
+ZA,South Africa,Africa,"af,en,nr,st,ss,tn,ts,ve,xh,zu",af
+ZM,Zambia,Africa,en,en
+ZW,Zimbabwe,Africa,"en,sn,nd",en

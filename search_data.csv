@@ -1,0 +1,243 @@
+,national,Success Rate,cough,fever,flu,tamiflu,sore throat
+0,Andorra,0.8,Success,Success,Success,Success,Fail
+1,United Arab Emirates,0.8,Success,Success,Success,Success,Fail
+2,Afghanistan,0.2,Fail,Fail,Success,Fail,Fail
+3,Antigua and Barbuda,0.8,Success,Success,Success,Fail,Success
+4,Anguilla,0.4,Fail,Success,Success,Fail,Fail
+5,Albania,0.6,Fail,Success,Success,Success,Fail
+6,Armenia,0.8,Success,Success,Success,Fail,Success
+7,Angola,1.0,Success,Success,Success,Success,Success
+8,Antarctica,0.0,Fail,Fail,Fail,Fail,Fail
+9,Argentina,1.0,Success,Success,Success,Success,Success
+10,American Samoa,0.6,Success,Success,Success,Fail,Fail
+11,Austria,1.0,Success,Success,Success,Success,Success
+12,Australia,1.0,Success,Success,Success,Success,Success
+13,Aruba,0.6,Fail,Success,Success,Success,Fail
+14,Åland,0.6,Success,Success,Success,Fail,Fail
+15,Azerbaijan,1.0,Success,Success,Success,Success,Success
+16,Bosnia and Herzegovina,1.0,Success,Success,Success,Success,Success
+17,Barbados,1.0,Success,Success,Success,Success,Success
+18,Bangladesh,0.8,Success,Success,Success,Fail,Success
+19,Belgium,1.0,Success,Success,Success,Success,Success
+20,Burkina Faso,0.6,Success,Success,Success,Fail,Fail
+21,Bulgaria,1.0,Success,Success,Success,Success,Success
+22,Bahrain,0.6,Success,Success,Success,Fail,Fail
+23,Burundi,0.6,Success,Success,Success,Fail,Fail
+24,Benin,0.6,Success,Success,Success,Fail,Fail
+25,Saint Barthélemy,0.4,Success,Fail,Success,Fail,Fail
+26,Bermuda,1.0,Success,Success,Success,Success,Success
+27,Brunei,1.0,Success,Success,Success,Success,Success
+28,Bolivia,1.0,Success,Success,Success,Success,Success
+29,Bonaire,0.4,Fail,Success,Success,Fail,Fail
+30,Brazil,1.0,Success,Success,Success,Success,Success
+31,Bahamas,1.0,Success,Success,Success,Success,Success
+32,Bouvet Island,0.0,Fail,Fail,Fail,Fail,Fail
+33,Botswana,0.8,Success,Success,Success,Fail,Success
+34,Belarus,0.2,Fail,Success,Fail,Fail,Fail
+35,Belize,1.0,Success,Success,Success,Success,Success
+36,Canada,1.0,Success,Success,Success,Success,Success
+37,Cocos [Keeling] Islands,0.0,Fail,Fail,Fail,Fail,Fail
+38,Democratic Republic of the Congo,0.6,Success,Success,Success,Fail,Fail
+39,Central African Republic,0.2,Fail,Fail,Success,Fail,Fail
+40,Republic of the Congo,0.6,Success,Success,Success,Fail,Fail
+41,Switzerland,1.0,Success,Success,Success,Success,Success
+42,Ivory Coast,0.8,Success,Success,Success,Fail,Success
+43,Cook Islands,0.4,Fail,Success,Success,Fail,Fail
+44,Chile,1.0,Success,Success,Success,Success,Success
+45,Cameroon,0.8,Success,Success,Success,Fail,Success
+46,China,0.6,Success,Success,Success,Fail,Fail
+47,Colombia,1.0,Success,Success,Success,Success,Success
+48,Costa Rica,1.0,Success,Success,Success,Success,Success
+49,Cuba,1.0,Success,Success,Success,Success,Success
+50,Cape Verde,0.8,Success,Success,Success,Fail,Success
+51,Curacao,0.8,Success,Success,Success,Fail,Success
+52,Christmas Island,0.0,Fail,Fail,Fail,Fail,Fail
+53,Cyprus,0.8,Success,Success,Success,Success,Fail
+54,Czech Republic,1.0,Success,Success,Success,Success,Success
+55,Germany,1.0,Success,Success,Success,Success,Success
+56,Djibouti,0.6,Success,Success,Success,Fail,Fail
+57,Denmark,1.0,Success,Success,Success,Success,Success
+58,Dominica,0.8,Success,Success,Success,Fail,Success
+59,Dominican Republic,1.0,Success,Success,Success,Success,Success
+60,Algeria,0.8,Success,Success,Success,Fail,Success
+61,Ecuador,1.0,Success,Success,Success,Success,Success
+62,Estonia,0.8,Success,Success,Success,Success,Fail
+63,Egypt,1.0,Success,Success,Success,Success,Success
+64,Western Sahara,0.0,Fail,Fail,Fail,Fail,Fail
+65,Spain,1.0,Success,Success,Success,Success,Success
+66,Ethiopia,0.6,Success,Success,Success,Fail,Fail
+67,Finland,1.0,Success,Success,Success,Success,Success
+68,Fiji,0.8,Success,Success,Success,Fail,Success
+69,Falkland Islands,0.6,Success,Success,Success,Fail,Fail
+70,Micronesia,0.4,Fail,Success,Success,Fail,Fail
+71,France,1.0,Success,Success,Success,Success,Success
+72,Gabon,0.6,Success,Success,Success,Fail,Fail
+73,United Kingdom,1.0,Success,Success,Success,Success,Success
+74,Grenada,0.8,Success,Success,Success,Fail,Success
+75,Georgia,1.0,Success,Success,Success,Success,Success
+76,French Guiana,0.6,Success,Success,Success,Fail,Fail
+77,Guernsey,0.8,Success,Success,Success,Fail,Success
+78,Ghana,1.0,Success,Success,Success,Success,Success
+79,Gibraltar,0.8,Success,Success,Success,Fail,Success
+80,Gambia,0.8,Success,Success,Success,Fail,Success
+81,Guinea,0.6,Success,Success,Success,Fail,Fail
+82,Guadeloupe,0.6,Success,Success,Success,Fail,Fail
+83,Equatorial Guinea,0.6,Success,Success,Success,Fail,Fail
+84,Greece,1.0,Success,Success,Success,Success,Success
+85,South Georgia and the South Sandwich Islands,0.0,Fail,Fail,Fail,Fail,Fail
+86,Guatemala,1.0,Success,Success,Success,Success,Success
+87,Guam,1.0,Success,Success,Success,Success,Success
+88,Guinea-Bissau,0.4,Fail,Success,Success,Fail,Fail
+89,Guyana,0.8,Success,Success,Success,Fail,Success
+90,Hong Kong,0.8,Success,Success,Success,Fail,Success
+91,Heard Island and McDonald Islands,0.0,Fail,Fail,Fail,Fail,Fail
+92,Honduras,1.0,Success,Success,Success,Success,Success
+93,Croatia,1.0,Success,Success,Success,Success,Success
+94,Haiti,0.6,Success,Success,Success,Fail,Fail
+95,Hungary,1.0,Success,Success,Success,Success,Success
+96,Indonesia,0.8,Success,Success,Success,Fail,Success
+97,Ireland,0.2,Fail,Fail,Fail,Success,Fail
+98,Israel,0.6,Fail,Success,Fail,Success,Success
+99,Isle of Man,0.8,Success,Success,Success,Fail,Success
+100,India,0.8,Success,Success,Success,Fail,Success
+101,British Indian Ocean Territory,0.0,Fail,Fail,Fail,Fail,Fail
+102,Iraq,0.8,Success,Success,Success,Success,Fail
+103,Iran,1.0,Success,Success,Success,Success,Success
+104,Iceland,1.0,Success,Success,Success,Success,Success
+105,Italy,1.0,Success,Success,Success,Success,Success
+106,Jersey,1.0,Success,Success,Success,Success,Success
+107,Jamaica,1.0,Success,Success,Success,Success,Success
+108,Jordan,0.8,Success,Success,Success,Success,Fail
+109,Japan,1.0,Success,Success,Success,Success,Success
+110,Kenya,1.0,Success,Success,Success,Success,Success
+111,Kyrgyzstan,0.2,Fail,Fail,Success,Fail,Fail
+112,Cambodia,0.6,Success,Success,Fail,Success,Fail
+113,Kiribati,0.0,Fail,Fail,Fail,Fail,Fail
+114,Comoros,0.0,Fail,Fail,Fail,Fail,Fail
+115,Saint Kitts and Nevis,0.8,Success,Success,Success,Fail,Success
+116,North Korea,0.0,Fail,Fail,Fail,Fail,Fail
+117,South Korea,0.8,Success,Success,Success,Success,Fail
+118,Kuwait,0.8,Success,Success,Success,Success,Fail
+119,Cayman Islands,1.0,Success,Success,Success,Success,Success
+120,Kazakhstan,0.8,Success,Success,Success,Success,Fail
+121,Laos,0.2,Fail,Fail,Fail,Success,Fail
+122,Lebanon,0.6,Success,Success,Success,Fail,Fail
+123,Saint Lucia,0.8,Success,Success,Success,Fail,Success
+124,Liechtenstein,0.6,Success,Success,Success,Fail,Fail
+125,Sri Lanka,0.8,Success,Success,Success,Success,Fail
+126,Liberia,0.8,Success,Success,Success,Fail,Success
+127,Lesotho,0.8,Success,Success,Success,Fail,Success
+128,Lithuania,1.0,Success,Success,Success,Success,Success
+129,Luxembourg,0.8,Success,Success,Success,Success,Fail
+130,Latvia,0.8,Success,Success,Success,Success,Fail
+131,Libya,0.6,Success,Success,Success,Fail,Fail
+132,Morocco,1.0,Success,Success,Success,Success,Success
+133,Monaco,0.4,Success,Fail,Success,Fail,Fail
+134,Moldova,0.8,Success,Success,Success,Success,Fail
+135,Montenegro,0.0,Fail,Fail,Fail,Fail,Fail
+136,Saint Martin,0.4,Fail,Success,Success,Fail,Fail
+137,Madagascar,0.6,Success,Success,Success,Fail,Fail
+138,Marshall Islands,0.2,Fail,Success,Fail,Fail,Fail
+139,North Macedonia,0.8,Success,Success,Success,Success,Fail
+140,Mali,0.6,Success,Success,Success,Fail,Fail
+141,Myanmar [Burma],0.4,Success,Fail,Fail,Success,Fail
+142,Mongolia,1.0,Success,Success,Success,Success,Success
+143,Macao,0.6,Success,Success,Success,Fail,Fail
+144,Northern Mariana Islands,0.8,Success,Success,Success,Fail,Success
+145,Martinique,0.8,Success,Success,Success,Success,Fail
+146,Mauritania,0.4,Success,Success,Fail,Fail,Fail
+147,Montserrat,0.2,Fail,Success,Fail,Fail,Fail
+148,Malta,0.4,Fail,Success,Fail,Success,Fail
+149,Mauritius,1.0,Success,Success,Success,Success,Success
+150,Malawi,0.8,Success,Success,Success,Fail,Success
+151,Mexico,1.0,Success,Success,Success,Success,Success
+152,Malaysia,1.0,Success,Success,Success,Success,Success
+153,Mozambique,0.8,Success,Success,Success,Fail,Success
+154,Namibia,0.0,Fail,Fail,Fail,Fail,Fail
+155,New Caledonia,0.8,Success,Success,Success,Success,Fail
+156,Niger,0.6,Success,Success,Success,Fail,Fail
+157,Norfolk Island,0.0,Fail,Fail,Fail,Fail,Fail
+158,Nigeria,1.0,Success,Success,Success,Success,Success
+159,Nicaragua,1.0,Success,Success,Success,Success,Success
+160,Netherlands,1.0,Success,Success,Success,Success,Success
+161,Norway,1.0,Success,Success,Success,Success,Success
+162,Nepal,0.8,Success,Success,Success,Success,Fail
+163,Nauru,0.0,Fail,Fail,Fail,Fail,Fail
+164,Niue,0.0,Fail,Fail,Fail,Fail,Fail
+165,New Zealand,1.0,Success,Success,Success,Success,Success
+166,Oman,0.6,Success,Success,Success,Fail,Fail
+167,Panama,1.0,Success,Success,Success,Success,Success
+168,Peru,1.0,Success,Success,Success,Success,Success
+169,French Polynesia,0.8,Success,Success,Success,Success,Fail
+170,Papua New Guinea,1.0,Success,Success,Success,Success,Success
+171,Philippines,1.0,Success,Success,Success,Success,Success
+172,Pakistan,1.0,Success,Success,Success,Success,Success
+173,Poland,1.0,Success,Success,Success,Success,Success
+174,Saint Pierre and Miquelon,0.2,Fail,Fail,Success,Fail,Fail
+175,Pitcairn Islands,0.0,Fail,Fail,Fail,Fail,Fail
+176,Puerto Rico,1.0,Success,Success,Success,Success,Success
+177,Palestine,0.6,Success,Success,Success,Fail,Fail
+178,Portugal,1.0,Success,Success,Success,Success,Success
+179,Palau,0.4,Fail,Success,Success,Fail,Fail
+180,Paraguay,1.0,Success,Success,Success,Success,Success
+181,Qatar,0.6,Success,Success,Success,Fail,Fail
+182,Réunion,0.8,Success,Success,Success,Success,Fail
+183,Romania,0.8,Success,Success,Success,Success,Fail
+184,Serbia,0.6,Success,Success,Success,Fail,Fail
+185,Russia,1.0,Success,Success,Success,Success,Success
+186,Saudi Arabia,1.0,Success,Success,Success,Success,Success
+187,Solomon Islands,0.6,Success,Success,Success,Fail,Fail
+188,Seychelles,0.2,Fail,Fail,Success,Fail,Fail
+189,Sudan,0.6,Success,Success,Success,Fail,Fail
+190,Sweden,1.0,Success,Success,Success,Success,Success
+191,Singapore,1.0,Success,Success,Success,Success,Success
+192,Saint Helena,1.0,Success,Success,Success,Success,Success
+193,Slovenia,1.0,Success,Success,Success,Success,Success
+194,Svalbard and Jan Mayen,0.0,Fail,Fail,Fail,Fail,Fail
+195,Slovakia,1.0,Success,Success,Success,Success,Success
+196,Sierra Leone,0.8,Success,Success,Success,Fail,Success
+197,San Marino,0.6,Success,Success,Success,Fail,Fail
+198,Senegal,1.0,Success,Success,Success,Success,Success
+199,Somalia,0.0,Fail,Fail,Fail,Fail,Fail
+200,Suriname,0.8,Success,Success,Success,Fail,Success
+201,South Sudan,0.8,Success,Success,Success,Fail,Success
+202,São Tomé and Príncipe,0.4,Fail,Success,Success,Fail,Fail
+203,El Salvador,1.0,Success,Success,Success,Success,Success
+204,Sint Maarten,0.0,Fail,Fail,Fail,Fail,Fail
+205,Syria,0.8,Success,Success,Success,Success,Fail
+206,Swaziland,0.8,Success,Success,Success,Fail,Success
+207,Turks and Caicos Islands,0.8,Success,Success,Success,Fail,Success
+208,Chad,0.6,Success,Success,Success,Fail,Fail
+209,French Southern Territories,0.0,Fail,Fail,Fail,Fail,Fail
+210,Togo,0.6,Success,Success,Success,Fail,Fail
+211,Thailand,1.0,Success,Success,Success,Success,Success
+212,Tajikistan,0.2,Fail,Fail,Success,Fail,Fail
+213,Tokelau,0.0,Fail,Fail,Fail,Fail,Fail
+214,East Timor,0.0,Fail,Fail,Fail,Fail,Fail
+215,Tunisia,0.6,Success,Success,Success,Fail,Fail
+216,Tonga,0.4,Fail,Success,Success,Fail,Fail
+217,Turkey,1.0,Success,Success,Success,Success,Success
+218,Trinidad and Tobago,1.0,Success,Success,Success,Success,Success
+219,Tuvalu,0.0,Fail,Fail,Fail,Fail,Fail
+220,Taiwan,1.0,Success,Success,Success,Success,Success
+221,Tanzania,0.8,Success,Success,Success,Fail,Success
+222,Ukraine,1.0,Success,Success,Success,Success,Success
+223,Uganda,0.8,Success,Success,Success,Fail,Success
+224,U.S. Minor Outlying Islands,0.0,Fail,Fail,Fail,Fail,Fail
+225,United States,1.0,Success,Success,Success,Success,Success
+226,Uruguay,1.0,Success,Success,Success,Success,Success
+227,Uzbekistan,0.6,Success,Success,Success,Fail,Fail
+228,Vatican City,0.0,Fail,Fail,Fail,Fail,Fail
+229,Saint Vincent and the Grenadines,0.8,Success,Success,Success,Fail,Success
+230,Venezuela,1.0,Success,Success,Success,Success,Success
+231,British Virgin Islands,0.8,Success,Success,Success,Fail,Success
+232,U.S. Virgin Islands,0.8,Success,Success,Success,Fail,Success
+233,Vietnam,1.0,Success,Success,Success,Success,Success
+234,Wallis and Futuna,0.0,Fail,Fail,Fail,Fail,Fail
+235,Samoa,0.0,Fail,Fail,Fail,Fail,Fail
+236,Kosovo,0.6,Fail,Success,Success,Success,Fail
+237,Yemen,0.8,Success,Success,Success,Success,Fail
+238,Mayotte,0.6,Success,Success,Success,Fail,Fail
+239,South Africa,1.0,Success,Success,Success,Success,Success
+240,Zambia,0.8,Success,Success,Success,Fail,Success
+241,Zimbabwe,0.8,Success,Success,Success,Fail,Success
