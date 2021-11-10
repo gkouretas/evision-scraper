@@ -1,4 +1,5 @@
 import os
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
@@ -12,7 +13,7 @@ def chromeSetUp():
     chromeOptions.add_argument("--no-sandbox")
     # webdriver executes chrome and goes to flunet app
     try:
-        PATH = '/Users/georgekouretas/Desktop/Random/chromedriver' # path to location of your chromedriver goes here
+        PATH = './chromedriver' # path to location of your chromedriver goes here
         driver = webdriver.Chrome(PATH, options=chromeOptions)
     except Exception:
         driver = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chromeOptions)

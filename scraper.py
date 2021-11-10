@@ -14,7 +14,7 @@ pytrends = TrendReq(hl='en-US', tz=360) # makes request to scrape google trends
 trends_data(dir, pytrends) # scrapes google trends data
 
 driver = chromeSetUp()
-who_nrevss(dir, driver) # scrapes cdc/who data
+# who_nrevss(dir, driver) # scrapes cdc/who data
 flumart(dir, driver) # scrapes flunet data
 
 # if [ "$(date +%u)" = 1 ]; then python scraper.py; fi

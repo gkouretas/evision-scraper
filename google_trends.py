@@ -11,7 +11,19 @@ def trends_data(dir, pytrends):
     dir = create_dir(dir + '/google_trends') # adds directory for google trends
     levels = ['national', 'state', 'metropolitan']
     column_names = []
-    ggl_complete = pd.DataFrame() # complete frame for search terms of given area
+    
+    terms = ['flu', 'cough', 'fever', 'tamiflu', 'sore throat'] # terms that will be used for scraping
+    terms.sort() # sorts terms in alphabetical order (not necessary)
+    
+    # ggl_complete = pd.DataFrame() # complete frame for search terms of given area
+    ggl_complete = dict.fromkeys(['National', 'State', 'Metropolitan', 'Dates'])
+    
+    # ggl_complete['National'] = {areas for areas in pd.read_csv('data/national.csv')['Name'].tolist()}
+    ggl_complete['National'] = dict.fromkeys(areas for areas in pd.read_csv('data/national.csv')['Name'].tolist())
+    ggl_complete['State'] = dict.fromkeys(areas for areas in pd.read_csv('data/state.csv')['Name'].tolist())
+    ggl_complete['Metropolitan'] = dict.fromkeys(areas for areas in pd.read_csv('data/metropolitan.csv')['Name'].tolist())
+
+    for area in ggl_complete['National']: ggl_complete['National'][area] = dict.fromkeys(terms)
 
     start_time = time.time()
 
@@ -23,6 +35,7 @@ def trends_data(dir, pytrends):
             area=area, 
             dir=dir + '/' + area, 
             names=pd.read_csv(f'data/{area}.csv')['Name'].tolist(), 
+            terms=terms,
             codes=pd.read_csv(f'data/{area}.csv')['Code'].tolist(), 
             language=pd.read_csv(f'data/{area}.csv')['Primary Language'].tolist(), 
             column_names=column_names, 
@@ -42,7 +55,7 @@ def trends_data(dir, pytrends):
     # pd.DataFrame(google_data).to_csv('google_search_data.csv')
     # pd.DataFrame(dates).to_csv('dates.csv')
 
-def trends_scrape(pytrends, area, dir, names, codes, language, column_names, ggl_complete, date_range='today 5-y'):
+def trends_scrape(pytrends, area, dir, names, terms, codes, language, column_names, ggl_complete, date_range='today 5-y'):
     
     # pytrends -> object for data scraping
     # area -> level being searched (either national, state, or metropolitan)
@@ -55,10 +68,7 @@ def trends_scrape(pytrends, area, dir, names, codes, language, column_names, ggl
     # date_range -> date range being searched (today 5-y is 5 years ago to current date) 
 
     create_dir(dir) # adds directory for corresponding level
-    for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas
-        terms = ['flu', 'cough', 'fever', 'tamiflu', 'sore throat'] # terms that will be used for scraping
-        terms.sort() # sorts terms in alphabetical order (not necessary)
-        
+    for area_count in range(0, len(codes)): # use range(0, len(codes) or len(names)) to cycle through all area codes; loops through all areas        
         en_terms = terms # save array of english
         
         search_count = 0 # tracks searches for given area
@@ -84,11 +94,14 @@ def trends_scrape(pytrends, area, dir, names, codes, language, column_names, ggl
                 try:
                     ggl = ggl.drop(columns = 'isPartial') # eliminates columns that are labeled 'isPartial'
                     area_dir = create_dir(dir + '/' + names[area_count]) # adds directory for area
-                    ggl_complete = pd.concat([ggl_complete, ggl], axis = 1)
+                    # ggl_complete = pd.concat([ggl_complete, ggl], axis = 1)
+                    
                     ggl.to_csv(area_dir + f'/GGL{codes[area_count]}{en_terms[search_count % len(terms)].replace(" ", "")}Weekly.csv') # generating csv in area's directory
                     print('Scraping finished (Time elapsed: ' + str(round(time.time() - start, 1)) + ' sec.)')
-                    # success['Success Rate'][area_count - flag] += 1
-                    # success[en_terms[search_count % len(terms)]][area_count - flag] = 'Success'
+                    ggl_complete[area.capitalize()][names[area_count]][en_terms[search_count % len(terms)]] = ggl[terms[search_count % len(terms)]]
+                        # print(ggl_complete[area.capitalize()][names[area_count]]['cough'])
+                        # success['Success Rate'][area_count - flag] += 1
+                        # success[en_terms[search_count % len(terms)]][area_count - flag] = 'Success'
                     search_count += 1 # incrementing search count
                 except Exception:
                     # increments search count to skip over failed search result.
@@ -96,7 +109,7 @@ def trends_scrape(pytrends, area, dir, names, codes, language, column_names, ggl
                     print('Scraping failed; insufficient search data for given search term')
                     column_names.pop() # remove name of area with insufficient search data
                     search_count += 1 # incrementing search count
-
+                print(ggl_complete[area.capitalize()][names[area_count]])
         else:
             print('Primary language incompatible with Google Translate')
 

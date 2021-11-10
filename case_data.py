@@ -57,6 +57,9 @@ def who_nrevss(dir, driver):
     
     print('Extracting .zip file')
     extract_zip([nat_dir + '/FluViewPhase2Data.zip', state_dir + '/FluViewPhase2Data.zip'])
+    
+    national = extract_cases(data=nat_dir + '/ILINet.csv', region=0)
+    state = extract_cases(data=state_dir + '/ILINet.csv', region=0)
 
 def get_to_download(driver):
     while(True):
@@ -80,14 +83,72 @@ def extract_zip(list):
             zip_ref.extractall(zip.split('/FluViewPhase2Data.zip')[0])
             os.remove(zip)
 
+def extract_cases(data, region):
+    if(region == 0):
+        df = pd.read_csv(data, header=1)
+        if(df['REGION'][0] != 'X'): # state
+            cases = df[['REGION', 'YEAR', 'WEEK', 'ILITOTAL']]
+            cases = sort_states(cases)
+        else: # national
+            cases = df[['YEAR', 'WEEK', 'AGE 0-4', 'AGE 25-49', 'AGE 25-64', 'AGE 5-24', 'AGE 50-64', 'AGE 65', 'ILITOTAL']]
+        return(cases)
+    elif(region == 1):
+        df = pd.read_csv(data, header=2)
+
+        # cases = df[['Country', 'Year', 'Week', 
+        # 'SDATE', 'EDATE', 'SPEC_PROCESSED_NB', 
+        # 'AH1', 'AH1N12009', 'AH3', 'AH5', 'ANOTSUBTYPED', 'INF_A', 
+        # 'BYAMAGATA', 'BVICTORIA', 'BNOTDETERMINED', 'INF_B',
+        # 'ALL_INF', 'ALL_INF2']]
+
+        cases = df[['Year', 'Week', 'SDATE', 'EDATE', 'SPEC_PROCESSED_NB', 
+        'AH1', 'AH1N12009', 'AH3', 'AH5', 'ANOTSUBTYPED', 'INF_A', 
+        'BYAMAGATA', 'BVICTORIA', 'BNOTDETERMINED', 'INF_B',
+        'ALL_INF', 'ALL_INF2']]
+
+        return(cases)
+
+def sort_states(cases):
+    df = pd.read_csv(path, header=1)
+    cases = df[['REGION', 'YEAR', 'WEEK', 'ILITOTAL']]
+
+    dict_data = dict.fromkeys(cases['REGION'][-55:-1])
+
+    idx = 0
+    inc = 52
+
+    while(True):
+        if(cases['REGION'].iloc[idx] == cases['REGION'].iloc[idx+inc]):
+            if not idx:
+                for i in range(idx, idx+inc):
+                    dict_data[cases['REGION'].iloc[i]] = cases[['YEAR', 'WEEK', 'ILITOTAL']].iloc[i]
+                idx += inc
+            else:
+                for i in range(idx, idx+inc):
+                    dict_data[cases['REGION'].iloc[i]] = pd.concat([dict_data[cases['REGION'].iloc[i]], cases[['YEAR', 'WEEK', 'ILITOTAL']].iloc[i]])            
+                idx += inc
+                if((idx + inc) == len(cases)): 
+                    for i in range(idx, idx+inc):
+                        dict_data[cases['REGION'].iloc[i]] = pd.concat([dict_data[cases['REGION'].iloc[i]], cases[['YEAR', 'WEEK', 'ILITOTAL']].iloc[i]], ignore_index=True)
+                    break
+        else:
+            inc += 1
+    
+    return dict_data
+
+
 def flumart(dir, driver):
+    # initializes dictionary to store processed data
+    dict_data = dict.fromkeys(pd.read_csv('data/flumartcountrylist.csv').Countries)
+    dict_data.pop("Montserrat")
+
     # reads list of countries that who flnet data exists for countries
     country_list = pd.read_csv('data/flumartcountrylist.csv')['Countries'].tolist()
 
     dir = create_dir(dir + '/cdc_who_data' + '/International')
     driver.get("https://apps.who.int/flumart/Default?ReportNo=12")
     # scraping data
-    # count = 0
+    count = 0
     prev_name = ''
     for name in country_list: # loops through list of countries
         if name == 'Montserrat': continue # montserrat is not compatible for some reason
@@ -110,7 +171,6 @@ def flumart(dir, driver):
         display_report = driver.find_element_by_name("ctl_ViewReport") # finds html element for button that loads spreadsheet
         display_report.click() # click button
         print("Downloading data from " + name + " at " + datetime.now().strftime('%H:%M:%S'))
-        # print(DOWNLOAD_PATH)
         start = time.time() # setting the time when the download starts
         while(True):
             try: # continually attempts while loading; will execute when spreadsheet gets loaded. time varies depending on how much data you're attempting to extract
@@ -121,15 +181,19 @@ def flumart(dir, driver):
                 break
             except Exception:
                 end = time.time() # sets time of failure (failure meaning the page is still loading)
-                if end - start > 300: # if page is still buffering after 5 minutes, it refreshes page
+                if end - start > 60: # if page is still buffering after 5 minutes, it refreshes page
                     refresh(driver)
                     start = time.time() # resets start time to correspond with the page getting refreshed
                 pass
+                time.sleep(0.5) # waits half a second
         dir_exists(DOWNLOAD_PATH + '/FluNetInteractiveReport.csv')
         prev_name = name # stores value of name to deselect for next iteration
         print(name + "'s data has downloaded (Time elapsed: ~" + str(round(time.time() - start, 1)) + " sec.)")
-        # count += 1
-        # if count == 5:
-        #     print('bye')
-        #     break
+
+        dict_data[name] = extract_cases(data=DOWNLOAD_PATH + '/FluNetInteractiveReport.csv', region=1)
+        print(dict_data)
+        
+        count += 1
+        if(count > 2): break
+        # break
     driver.close()
